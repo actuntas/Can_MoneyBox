@@ -15,5 +15,4 @@ struct AccountsRequest: RequestProtocol {
     var httpMethod: RequestMethod = .GET
     var headers: [String : String] = APIConstants.loginHeader
     var httpBody: [String : Any] = [:]
-    var bearerToken:String? = UserDefaults.standard.string(forKey: "token")
 }

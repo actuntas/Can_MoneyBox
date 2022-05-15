@@ -8,7 +8,7 @@
 import UIKit
 
 /// This is another approach i use for getting some default configuration. Not that flexible but fast.
-class MMBRoundedShadowView: UIView {
+class RoundedShadowView: UIView {
     
     override func awakeFromNib() {
         layer.cornerRadius = 8

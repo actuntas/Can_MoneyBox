@@ -8,17 +8,71 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--AccountsVC-->
+        <!--Accounts-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
                 <viewController storyboardIdentifier="AccountsVC" id="Y6W-OH-hqX" customClass="AccountsVC" customModule="Can_MoneyBox" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="wci-Gm-JgN">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AccountCell" rowHeight="177" id="mjO-OT-Wff" customClass="AccountsCell" customModule="Can_MoneyBox" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="44.5" width="414" height="177"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="mjO-OT-Wff" id="oPz-KM-7po">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="177"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SIX-fq-yau" customClass="RoundedShadowView" customModule="Can_MoneyBox" customModuleProvider="target">
+                                                    <rect key="frame" x="36" y="27" width="342" height="123"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j6b-CJ-FJi">
+                                                            <rect key="frame" x="48" y="22" width="42" height="21"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailingMargin" secondItem="SIX-fq-yau" secondAttribute="trailing" constant="16" id="06f-fb-abZ"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="SIX-fq-yau" secondAttribute="bottom" constant="16" id="PWw-f1-iIC"/>
+                                                <constraint firstItem="SIX-fq-yau" firstAttribute="leading" secondItem="oPz-KM-7po" secondAttribute="leadingMargin" constant="16" id="TX6-cl-mGA"/>
+                                                <constraint firstItem="SIX-fq-yau" firstAttribute="top" secondItem="oPz-KM-7po" secondAttribute="topMargin" constant="16" id="bRb-T2-FRg"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="accountNameLabel" destination="j6b-CJ-FJi" id="rj9-i0-fll"/>
+                                            <outlet property="cardView" destination="SIX-fq-yau" id="Er9-2f-raf"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="Y6W-OH-hqX" id="VLQ-v3-RRI"/>
+                                    <outlet property="delegate" destination="Y6W-OH-hqX" id="6I6-8U-CV2"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="wci-Gm-JgN" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="0h8-Xt-gUF"/>
+                            <constraint firstItem="wci-Gm-JgN" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="2n8-Ll-sNi"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="wci-Gm-JgN" secondAttribute="bottom" id="6S6-Q5-TC4"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="wci-Gm-JgN" secondAttribute="trailing" id="9ZA-sq-VbK"/>
+                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="TwN-ry-6zM"/>
+                    <navigationItem key="navigationItem" title="Accounts" id="TwN-ry-6zM"/>
+                    <connections>
+                        <outlet property="tableView" destination="wci-Gm-JgN" id="wcU-eh-qnf"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -29,9 +83,10 @@
             <objects>
                 <navigationController storyboardIdentifier="AccountsRoot" automaticallyAdjustsScrollViewInsets="NO" id="JIf-LL-mZW" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="KwE-6y-RgZ">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="KwE-6y-RgZ">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <navigationBarAppearance key="compactAppearance"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>

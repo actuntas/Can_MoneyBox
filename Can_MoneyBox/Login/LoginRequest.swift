@@ -15,5 +15,4 @@ struct LoginRequest: RequestProtocol {
     var httpMethod: RequestMethod = .POST
     var headers: [String : String] = APIConstants.loginHeader
     var httpBody: [String : Any] = [:]
-    var bearerToken:String? = nil
 }

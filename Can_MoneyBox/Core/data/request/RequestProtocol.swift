@@ -13,8 +13,7 @@ protocol RequestProtocol {
     var path: String { set get }
     var httpMethod: RequestMethod { set get }
     var headers: Dictionary<String,String> { set get }
-    var httpBody: [String:Any] { set get } 
-    var bearerToken:String? { set get }
+    var httpBody: [String:Any] { set get }
     func decode(_ data: Data) throws -> Response
 }
 
@@ -32,10 +31,6 @@ extension RequestProtocol {
         APIConstants.loginHeader
     }
     
-    var bearerToken:String? {
-        nil
-    }
-    
     func createURLRequest() throws -> URLRequest {
         var components = URLComponents()
         components.scheme = "https"
@@ -50,9 +45,7 @@ extension RequestProtocol {
         if !headers.isEmpty {
             urlRequest.allHTTPHeaderFields = headers
         }
-        if bearerToken != nil {
-            urlRequest.setValue("Bearer \(String(describing: bearerToken))", forHTTPHeaderField: "Authorization")
-        }
+    
         urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
         if !httpBody.isEmpty {
             urlRequest.httpBody = try JSONSerialization.data(withJSONObject: httpBody)

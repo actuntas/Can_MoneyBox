@@ -9,16 +9,70 @@ import UIKit
 
 class AccountsVC: UIViewController {
     
+    @IBOutlet weak var tableView: UITableView!
+    
     var viewModel: AccountsViewModel!
+    var datasource: AccountsViewModelDatasource!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .purple
         configure()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        viewModel.getAccounts()
+    }
+    
     private func configure() {
-        print(viewModel.name)
+        viewModel.output = self
     }
 
 }
+
+extension AccountsVC: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        viewModel.name
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        viewModel.datasource.products.count
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        178
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: AccountsCell.reuseIdentifier, for: indexPath) as? AccountsCell else { return UITableViewCell() }
+        let account = viewModel.datasource.products[indexPath.row]
+        cell.populate(for: account)
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        DispatchQueue.main.async {
+            tableView.deselectRow(at: indexPath, animated: true)
+            let selectedProduct = self.viewModel.datasource.products[indexPath.row]
+            let detailsViewModel = AccountDetailViewModel(service: DefaultNetworkService())
+            let storyboard = UIStoryboard(name: "AccountDetails", bundle: nil)
+            guard let detailsVC = storyboard.instantiateViewController(withIdentifier: "AccountDetailsVC") as? AccountDetailsVC else { return }
+            detailsVC.viewModel = detailsViewModel
+            detailsVC.selectedProduct = selectedProduct
+            self.show(detailsVC, sender: nil)
+        }
+        
+        
+    }
+}
+
+extension AccountsVC: AccountsViewModelOutput {
+    func reloadData() {
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+    }
+    
+    
+}
+    

@@ -38,6 +38,12 @@
 		32912C292831712400D79A91 /* AccountsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32912C282831712400D79A91 /* AccountsRequest.swift */; };
 		32912C2B2831797C00D79A91 /* Accounts.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32912C2A2831797C00D79A91 /* Accounts.storyboard */; };
 		32912C2D28317C2300D79A91 /* RoundedShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32912C2C28317C2300D79A91 /* RoundedShadowView.swift */; };
+		32912C2F28317E3500D79A91 /* AccountsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32912C2E28317E3500D79A91 /* AccountsCell.swift */; };
+		32912C332831A95500D79A91 /* AccountDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32912C322831A95500D79A91 /* AccountDetailsVC.swift */; };
+		32912C352831AA0F00D79A91 /* AccountDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32912C342831AA0F00D79A91 /* AccountDetailViewModel.swift */; };
+		32912C372831ACD400D79A91 /* IncrementRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32912C362831ACD400D79A91 /* IncrementRequest.swift */; };
+		32912C392831AFB900D79A91 /* AccountDetails.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32912C382831AFB900D79A91 /* AccountDetails.storyboard */; };
+		32912C3B2831B3E700D79A91 /* IncrementResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32912C3A2831B3E700D79A91 /* IncrementResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -92,6 +98,12 @@
 		32912C282831712400D79A91 /* AccountsRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsRequest.swift; sourceTree = "<group>"; };
 		32912C2A2831797C00D79A91 /* Accounts.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Accounts.storyboard; sourceTree = "<group>"; };
 		32912C2C28317C2300D79A91 /* RoundedShadowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedShadowView.swift; sourceTree = "<group>"; };
+		32912C2E28317E3500D79A91 /* AccountsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsCell.swift; sourceTree = "<group>"; };
+		32912C322831A95500D79A91 /* AccountDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDetailsVC.swift; sourceTree = "<group>"; };
+		32912C342831AA0F00D79A91 /* AccountDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDetailViewModel.swift; sourceTree = "<group>"; };
+		32912C362831ACD400D79A91 /* IncrementRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncrementRequest.swift; sourceTree = "<group>"; };
+		32912C382831AFB900D79A91 /* AccountDetails.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AccountDetails.storyboard; sourceTree = "<group>"; };
+		32912C3A2831B3E700D79A91 /* IncrementResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncrementResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +159,7 @@
 				32912C04283127D700D79A91 /* Splash */,
 				32912C032831276600D79A91 /* Login */,
 				32912C2328316E6A00D79A91 /* Accounts */,
+				32912C312831A93400D79A91 /* AccountDetails */,
 				3225F85628308D4500B10A29 /* AppDelegate.swift */,
 				3225F85828308D4500B10A29 /* SceneDelegate.swift */,
 				3225F85F28308D4600B10A29 /* Assets.xcassets */,
@@ -225,6 +238,7 @@
 			children = (
 				32912C1D283138E900D79A91 /* LoginResponse.swift */,
 				32912C1F28316BEB00D79A91 /* AccountResponse.swift */,
+				32912C3A2831B3E700D79A91 /* IncrementResponse.swift */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -276,8 +290,20 @@
 				32912C2428316EB100D79A91 /* AccountsVC.swift */,
 				32912C2628316F3100D79A91 /* AccountsViewModel.swift */,
 				32912C282831712400D79A91 /* AccountsRequest.swift */,
+				32912C2E28317E3500D79A91 /* AccountsCell.swift */,
 			);
 			path = Accounts;
+			sourceTree = "<group>";
+		};
+		32912C312831A93400D79A91 /* AccountDetails */ = {
+			isa = PBXGroup;
+			children = (
+				32912C322831A95500D79A91 /* AccountDetailsVC.swift */,
+				32912C342831AA0F00D79A91 /* AccountDetailViewModel.swift */,
+				32912C362831ACD400D79A91 /* IncrementRequest.swift */,
+				32912C382831AFB900D79A91 /* AccountDetails.storyboard */,
+			);
+			path = AccountDetails;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -391,6 +417,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				32912C0F28312BD600D79A91 /* Login.storyboard in Resources */,
+				32912C392831AFB900D79A91 /* AccountDetails.storyboard in Resources */,
 				32912C2B2831797C00D79A91 /* Accounts.storyboard in Resources */,
 				3225F86328308D4600B10A29 /* LaunchScreen.storyboard in Resources */,
 				3225F86028308D4600B10A29 /* Assets.xcassets in Resources */,
@@ -421,6 +448,7 @@
 			files = (
 				3225F88B28308E7E00B10A29 /* APIConstants.swift in Sources */,
 				3225F893283090C800B10A29 /* NetworkError.swift in Sources */,
+				32912C332831A95500D79A91 /* AccountDetailsVC.swift in Sources */,
 				3225F895283095BE00B10A29 /* NetworkService.swift in Sources */,
 				32912C1C2831387100D79A91 /* LoginRequest.swift in Sources */,
 				32912C2028316BEB00D79A91 /* AccountResponse.swift in Sources */,
@@ -429,15 +457,19 @@
 				32912C2528316EB100D79A91 /* AccountsVC.swift in Sources */,
 				32912C1E283138E900D79A91 /* LoginResponse.swift in Sources */,
 				3225F85928308D4500B10A29 /* SceneDelegate.swift in Sources */,
+				32912C3B2831B3E700D79A91 /* IncrementResponse.swift in Sources */,
 				32912C2728316F3100D79A91 /* AccountsViewModel.swift in Sources */,
+				32912C2F28317E3500D79A91 /* AccountsCell.swift in Sources */,
 				32912C1A2831367600D79A91 /* LoginViewModel.swift in Sources */,
 				3225F88E28308ECC00B10A29 /* RequestProtocol.swift in Sources */,
 				3225F8902830905700B10A29 /* RequestMethod.swift in Sources */,
 				32912C292831712400D79A91 /* AccountsRequest.swift in Sources */,
 				32912C1428312E6800D79A91 /* GradientView.swift in Sources */,
 				32912C2228316D8100D79A91 /* LoginViewModelInputs.swift in Sources */,
+				32912C372831ACD400D79A91 /* IncrementRequest.swift in Sources */,
 				32912C16283130B300D79A91 /* LoginTextfield.swift in Sources */,
 				32912C0B2831294700D79A91 /* Identifiers.swift in Sources */,
+				32912C352831AA0F00D79A91 /* AccountDetailViewModel.swift in Sources */,
 				32912C06283127F200D79A91 /* SplashVC.swift in Sources */,
 				32912C2D28317C2300D79A91 /* RoundedShadowView.swift in Sources */,
 				32912C18283134BD00D79A91 /* RoundedButton.swift in Sources */,
