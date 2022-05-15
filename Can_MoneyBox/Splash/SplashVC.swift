@@ -9,8 +9,17 @@ import UIKit
 
 class SplashVC: UIViewController {
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        view.backgroundColor = .purple
+    var loginVC: LoginVC!
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        loadLogin()
+    }
+    
+    private func loadLogin() {
+        let storyboard = UIStoryboard(name: "Login", bundle: nil)
+        loginVC = storyboard.instantiateViewController(withIdentifier: Identifiers.loginVC) as? LoginVC
+        loginVC.modalPresentationStyle = .fullScreen
+        self.present(loginVC, animated: false)
     }
 }
