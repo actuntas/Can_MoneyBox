@@ -28,6 +28,9 @@
 		32912C1428312E6800D79A91 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32912C1328312E6800D79A91 /* GradientView.swift */; };
 		32912C16283130B300D79A91 /* LoginTextfield.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32912C15283130B300D79A91 /* LoginTextfield.swift */; };
 		32912C18283134BD00D79A91 /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32912C17283134BD00D79A91 /* RoundedButton.swift */; };
+		32912C1A2831367600D79A91 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32912C192831367600D79A91 /* LoginViewModel.swift */; };
+		32912C1C2831387100D79A91 /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32912C1B2831387100D79A91 /* LoginRequest.swift */; };
+		32912C1E283138E900D79A91 /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32912C1D283138E900D79A91 /* LoginResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +75,9 @@
 		32912C1328312E6800D79A91 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		32912C15283130B300D79A91 /* LoginTextfield.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTextfield.swift; sourceTree = "<group>"; };
 		32912C17283134BD00D79A91 /* RoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
+		32912C192831367600D79A91 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		32912C1B2831387100D79A91 /* LoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequest.swift; sourceTree = "<group>"; };
+		32912C1D283138E900D79A91 /* LoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -211,6 +217,9 @@
 			children = (
 				32912C0E28312BD600D79A91 /* Login.storyboard */,
 				32912C1028312BDD00D79A91 /* LoginVC.swift */,
+				32912C192831367600D79A91 /* LoginViewModel.swift */,
+				32912C1B2831387100D79A91 /* LoginRequest.swift */,
+				32912C1D283138E900D79A91 /* LoginResponse.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -383,9 +392,12 @@
 				3225F88B28308E7E00B10A29 /* APIConstants.swift in Sources */,
 				3225F893283090C800B10A29 /* NetworkError.swift in Sources */,
 				3225F895283095BE00B10A29 /* NetworkService.swift in Sources */,
+				32912C1C2831387100D79A91 /* LoginRequest.swift in Sources */,
 				3225F85728308D4500B10A29 /* AppDelegate.swift in Sources */,
 				32912C1128312BDD00D79A91 /* LoginVC.swift in Sources */,
+				32912C1E283138E900D79A91 /* LoginResponse.swift in Sources */,
 				3225F85928308D4500B10A29 /* SceneDelegate.swift in Sources */,
+				32912C1A2831367600D79A91 /* LoginViewModel.swift in Sources */,
 				3225F88E28308ECC00B10A29 /* RequestProtocol.swift in Sources */,
 				3225F8902830905700B10A29 /* RequestMethod.swift in Sources */,
 				32912C1428312E6800D79A91 /* GradientView.swift in Sources */,

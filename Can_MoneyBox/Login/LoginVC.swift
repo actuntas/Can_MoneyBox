@@ -17,9 +17,11 @@ class LoginVC: UIViewController {
     private lazy var loginButton: MMButton = { // Can add target here because it's lazy
         let button = MMButton(backgroundColor: .clear, title: "LOG IN")
         button.addTarget(self, action: #selector(self.loginPressed), for: .touchUpInside)
-        button.isEnabled = false
+        //button.isEnabled = false
         return button
     }()
+    
+    var viewModel: LoginViewModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,8 +44,21 @@ class LoginVC: UIViewController {
         ])
     }
     
+    private func navigate() {
+        print("navigate")
+    }
+    
     @objc private func loginPressed() {
-        print("pressed")
+        guard let email = emailTextField.text, let password = passwordTextField.text else { return }
+        viewModel.login(email: email, password: password) { [weak self] error in
+            if error != nil {
+                //self.showAlert(error)
+            } else {
+                DispatchQueue.main.async {
+                    self?.navigate()
+                }
+            }
+        }
     }
 
 }
