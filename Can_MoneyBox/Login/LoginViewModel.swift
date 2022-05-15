@@ -8,9 +8,8 @@
 import Foundation
 
 protocol LoginViewModelOutput: AnyObject {
-
-    func handleEmailError(_ shouldShowError: Bool)
-    func handlePasswordError(_ shouldShowError: Bool)
+    func handleEmailError(shouldShowError: Bool)
+    func handlePasswordError(shouldShowError: Bool)
 }
 
 enum LoginViewModelInput {
@@ -54,50 +53,29 @@ final class LoginViewModel {
     private func cacheToken(token: String) {
         UserDefaults.standard.set(token, forKey: "token")
     }
+    
 }
 
 extension LoginViewModel {
-    func isValid(text: String?, type: LoginViewModelInput) -> Bool {
+    func validateAndUpdateErrors(text: String?, type: LoginViewModelInput) -> Bool {
         switch type {
         case .email:
             guard let email = text, !email.isEmpty else {
-                output?.handleEmailError(true)
+                output?.handleEmailError(shouldShowError: true)
                 return false
             }
-            let success = email.count > 8
-            output?.handleEmailError(!success)
+            let success = email.count > 8 
+            output?.handleEmailError(shouldShowError: !success)
             return success
         case .password:
             guard let password = text, !password.isEmpty else {
-                output?.handlePasswordError(true)
+                output?.handlePasswordError(shouldShowError: true)
                 return false
             }
             let success = password.count > 8
-            output?.handlePasswordError(!success)
+            output?.handlePasswordError(shouldShowError: !success)
             return success
         }
-    }
-    
-//    func checkFields(inputType: LoginViewModelInput, email: String?, password: String?) {
-//
-//        switch inputType {
-//        case .email:
-//            if isValid(text: email, type: .email) {
-//                output?.handleEmailError(false)
-//            } else {
-//                output?.handleEmailError(true)
-//            }
-//        case .password:
-//            if isValid(text: password, type: .password) {
-//                output?.handlePasswordError(false)
-//            } else {
-//                output?.handlePasswordError(true)
-//            }
-//        }
-//    }
-    
-    func checkValidation(email: String?, password: String?) -> Bool {
-        return isValid(text: email, type: .email) && isValid(text: password, type: .password)
     }
     
 }

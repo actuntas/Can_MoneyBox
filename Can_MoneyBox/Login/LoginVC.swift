@@ -45,12 +45,12 @@ class LoginVC: UIViewController {
         ])
     }
     
-    private func changeButtonState(shouldEnable: Bool) {
-        loginButton.isEnabled = shouldEnable
-    }
-    
     private func navigateAndInjectDatasource(datasource: LoginViewModelDatasource) {
         print(datasource.name)
+    }
+    
+    private func changeButtonState(shouldEnable: Bool) {
+        loginButton.isEnabled = shouldEnable
     }
     
     @objc private func loginPressed() {
@@ -69,17 +69,17 @@ class LoginVC: UIViewController {
 
 extension LoginVC: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
-        let success = viewModel.isValid(text: emailTextField.text, type: .email) && viewModel.isValid(text: passwordTextField.text, type: .password)
+        let success = viewModel.validateAndUpdateErrors(text: emailTextField.text, type: .email) && viewModel.validateAndUpdateErrors(text: passwordTextField.text, type: .password)
         changeButtonState(shouldEnable: success)
     }
 }
 
 extension LoginVC: LoginViewModelOutput {
-    func handleEmailError(_ shouldShowError: Bool) {
+    func handleEmailError(shouldShowError: Bool) {
         emailErrorLabel.alpha = shouldShowError ? 1 : 0
     }
     
-    func handlePasswordError(_ shouldShowError: Bool) {
+    func handlePasswordError(shouldShowError: Bool) {
         passwordErrorLabel.alpha = shouldShowError ? 1 : 0
     }
 }
