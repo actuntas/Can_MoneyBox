@@ -7,28 +7,35 @@
 
 import Foundation
 
+struct LoginViewModelDatasource {
+    let name: String
+    let user: User
+}
+
 final class LoginViewModel {
     
     let service: NetworkService
-    var request = LoginRequest()
-    //var loginViewModelDatasource = LoginViewModelDatasource() coming next
+    
     init(service: NetworkService) {
         self.service = service
     }
     
-    func login(email: String, password: String, completion: @escaping (Error?) -> Void) {
+    var request = LoginRequest()
+    
+    func login(email: String, password: String, completion: @escaping (LoginViewModelDatasource?, Error?) -> Void) {
         
         request.httpBody = ["Email":email, "Password":password, "Idfa":"idfa"]
         
-        service.perform(request) { result in
+        service.perform(request) { [weak self] result in
             switch result {
                 
             case .success(let user):
                 let token = user.session.bearerToken
-                self.cacheToken(token: token)
-                completion(nil)
+                self?.cacheToken(token: token)
+                let datasource = LoginViewModelDatasource(name: user.user.firstName, user: user.user) // will eleminate unnecessary information soon
+                completion(datasource, nil)
             case .failure(let error):
-                completion(error)
+                completion(nil, error)
             }
         }
     }
@@ -37,3 +44,4 @@ final class LoginViewModel {
         UserDefaults.standard.set(token, forKey: "token")
     }
 }
+

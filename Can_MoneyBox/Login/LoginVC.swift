@@ -44,24 +44,25 @@ class LoginVC: UIViewController {
         ])
     }
     
-    private func navigate() {
-        print("navigate")
+    private func navigate(datasource: LoginViewModelDatasource) {
+        print(datasource.name)
     }
     
     @objc private func loginPressed() {
         guard let email = emailTextField.text, let password = passwordTextField.text else { return }
-        viewModel.login(email: email, password: password) { [weak self] error in
+        viewModel.login(email: email, password: password) { [weak self] datasource, error in
             if error != nil {
                 //self.showAlert(error)
-            } else {
+            } else if let _datasource = datasource {
                 DispatchQueue.main.async {
-                    self?.navigate()
+                    self?.navigate(datasource: _datasource)
                 }
             }
         }
     }
 
 }
+
 
 extension LoginVC: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
