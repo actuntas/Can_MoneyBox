@@ -1,0 +1,607 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3225F85728308D4500B10A29 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3225F85628308D4500B10A29 /* AppDelegate.swift */; };
+		3225F85928308D4500B10A29 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3225F85828308D4500B10A29 /* SceneDelegate.swift */; };
+		3225F85B28308D4500B10A29 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3225F85A28308D4500B10A29 /* ViewController.swift */; };
+		3225F85E28308D4500B10A29 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3225F85C28308D4500B10A29 /* Main.storyboard */; };
+		3225F86028308D4600B10A29 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3225F85F28308D4600B10A29 /* Assets.xcassets */; };
+		3225F86328308D4600B10A29 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3225F86128308D4600B10A29 /* LaunchScreen.storyboard */; };
+		3225F86E28308D4600B10A29 /* Can_MoneyBoxTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3225F86D28308D4600B10A29 /* Can_MoneyBoxTests.swift */; };
+		3225F87828308D4600B10A29 /* Can_MoneyBoxUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3225F87728308D4600B10A29 /* Can_MoneyBoxUITests.swift */; };
+		3225F87A28308D4600B10A29 /* Can_MoneyBoxUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3225F87928308D4600B10A29 /* Can_MoneyBoxUITestsLaunchTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		3225F86A28308D4600B10A29 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3225F84B28308D4500B10A29 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3225F85228308D4500B10A29;
+			remoteInfo = Can_MoneyBox;
+		};
+		3225F87428308D4600B10A29 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3225F84B28308D4500B10A29 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3225F85228308D4500B10A29;
+			remoteInfo = Can_MoneyBox;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		3225F85328308D4500B10A29 /* Can_MoneyBox.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Can_MoneyBox.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3225F85628308D4500B10A29 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		3225F85828308D4500B10A29 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		3225F85A28308D4500B10A29 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		3225F85D28308D4500B10A29 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		3225F85F28308D4600B10A29 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		3225F86228308D4600B10A29 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		3225F86428308D4600B10A29 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3225F86928308D4600B10A29 /* Can_MoneyBoxTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Can_MoneyBoxTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3225F86D28308D4600B10A29 /* Can_MoneyBoxTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Can_MoneyBoxTests.swift; sourceTree = "<group>"; };
+		3225F87328308D4600B10A29 /* Can_MoneyBoxUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Can_MoneyBoxUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3225F87728308D4600B10A29 /* Can_MoneyBoxUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Can_MoneyBoxUITests.swift; sourceTree = "<group>"; };
+		3225F87928308D4600B10A29 /* Can_MoneyBoxUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Can_MoneyBoxUITestsLaunchTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		3225F85028308D4500B10A29 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3225F86628308D4600B10A29 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3225F87028308D4600B10A29 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3225F84A28308D4500B10A29 = {
+			isa = PBXGroup;
+			children = (
+				3225F85528308D4500B10A29 /* Can_MoneyBox */,
+				3225F86C28308D4600B10A29 /* Can_MoneyBoxTests */,
+				3225F87628308D4600B10A29 /* Can_MoneyBoxUITests */,
+				3225F85428308D4500B10A29 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		3225F85428308D4500B10A29 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3225F85328308D4500B10A29 /* Can_MoneyBox.app */,
+				3225F86928308D4600B10A29 /* Can_MoneyBoxTests.xctest */,
+				3225F87328308D4600B10A29 /* Can_MoneyBoxUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3225F85528308D4500B10A29 /* Can_MoneyBox */ = {
+			isa = PBXGroup;
+			children = (
+				3225F85628308D4500B10A29 /* AppDelegate.swift */,
+				3225F85828308D4500B10A29 /* SceneDelegate.swift */,
+				3225F85A28308D4500B10A29 /* ViewController.swift */,
+				3225F85C28308D4500B10A29 /* Main.storyboard */,
+				3225F85F28308D4600B10A29 /* Assets.xcassets */,
+				3225F86128308D4600B10A29 /* LaunchScreen.storyboard */,
+				3225F86428308D4600B10A29 /* Info.plist */,
+			);
+			path = Can_MoneyBox;
+			sourceTree = "<group>";
+		};
+		3225F86C28308D4600B10A29 /* Can_MoneyBoxTests */ = {
+			isa = PBXGroup;
+			children = (
+				3225F86D28308D4600B10A29 /* Can_MoneyBoxTests.swift */,
+			);
+			path = Can_MoneyBoxTests;
+			sourceTree = "<group>";
+		};
+		3225F87628308D4600B10A29 /* Can_MoneyBoxUITests */ = {
+			isa = PBXGroup;
+			children = (
+				3225F87728308D4600B10A29 /* Can_MoneyBoxUITests.swift */,
+				3225F87928308D4600B10A29 /* Can_MoneyBoxUITestsLaunchTests.swift */,
+			);
+			path = Can_MoneyBoxUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		3225F85228308D4500B10A29 /* Can_MoneyBox */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3225F87D28308D4600B10A29 /* Build configuration list for PBXNativeTarget "Can_MoneyBox" */;
+			buildPhases = (
+				3225F84F28308D4500B10A29 /* Sources */,
+				3225F85028308D4500B10A29 /* Frameworks */,
+				3225F85128308D4500B10A29 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Can_MoneyBox;
+			productName = Can_MoneyBox;
+			productReference = 3225F85328308D4500B10A29 /* Can_MoneyBox.app */;
+			productType = "com.apple.product-type.application";
+		};
+		3225F86828308D4600B10A29 /* Can_MoneyBoxTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3225F88028308D4600B10A29 /* Build configuration list for PBXNativeTarget "Can_MoneyBoxTests" */;
+			buildPhases = (
+				3225F86528308D4600B10A29 /* Sources */,
+				3225F86628308D4600B10A29 /* Frameworks */,
+				3225F86728308D4600B10A29 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3225F86B28308D4600B10A29 /* PBXTargetDependency */,
+			);
+			name = Can_MoneyBoxTests;
+			productName = Can_MoneyBoxTests;
+			productReference = 3225F86928308D4600B10A29 /* Can_MoneyBoxTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		3225F87228308D4600B10A29 /* Can_MoneyBoxUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3225F88328308D4600B10A29 /* Build configuration list for PBXNativeTarget "Can_MoneyBoxUITests" */;
+			buildPhases = (
+				3225F86F28308D4600B10A29 /* Sources */,
+				3225F87028308D4600B10A29 /* Frameworks */,
+				3225F87128308D4600B10A29 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3225F87528308D4600B10A29 /* PBXTargetDependency */,
+			);
+			name = Can_MoneyBoxUITests;
+			productName = Can_MoneyBoxUITests;
+			productReference = 3225F87328308D4600B10A29 /* Can_MoneyBoxUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		3225F84B28308D4500B10A29 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1330;
+				LastUpgradeCheck = 1330;
+				TargetAttributes = {
+					3225F85228308D4500B10A29 = {
+						CreatedOnToolsVersion = 13.3.1;
+					};
+					3225F86828308D4600B10A29 = {
+						CreatedOnToolsVersion = 13.3.1;
+						TestTargetID = 3225F85228308D4500B10A29;
+					};
+					3225F87228308D4600B10A29 = {
+						CreatedOnToolsVersion = 13.3.1;
+						TestTargetID = 3225F85228308D4500B10A29;
+					};
+				};
+			};
+			buildConfigurationList = 3225F84E28308D4500B10A29 /* Build configuration list for PBXProject "Can_MoneyBox" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 3225F84A28308D4500B10A29;
+			productRefGroup = 3225F85428308D4500B10A29 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				3225F85228308D4500B10A29 /* Can_MoneyBox */,
+				3225F86828308D4600B10A29 /* Can_MoneyBoxTests */,
+				3225F87228308D4600B10A29 /* Can_MoneyBoxUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		3225F85128308D4500B10A29 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3225F86328308D4600B10A29 /* LaunchScreen.storyboard in Resources */,
+				3225F86028308D4600B10A29 /* Assets.xcassets in Resources */,
+				3225F85E28308D4500B10A29 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3225F86728308D4600B10A29 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3225F87128308D4600B10A29 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		3225F84F28308D4500B10A29 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3225F85B28308D4500B10A29 /* ViewController.swift in Sources */,
+				3225F85728308D4500B10A29 /* AppDelegate.swift in Sources */,
+				3225F85928308D4500B10A29 /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3225F86528308D4600B10A29 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3225F86E28308D4600B10A29 /* Can_MoneyBoxTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3225F86F28308D4600B10A29 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3225F87A28308D4600B10A29 /* Can_MoneyBoxUITestsLaunchTests.swift in Sources */,
+				3225F87828308D4600B10A29 /* Can_MoneyBoxUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		3225F86B28308D4600B10A29 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3225F85228308D4500B10A29 /* Can_MoneyBox */;
+			targetProxy = 3225F86A28308D4600B10A29 /* PBXContainerItemProxy */;
+		};
+		3225F87528308D4600B10A29 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3225F85228308D4500B10A29 /* Can_MoneyBox */;
+			targetProxy = 3225F87428308D4600B10A29 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		3225F85C28308D4500B10A29 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3225F85D28308D4500B10A29 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		3225F86128308D4600B10A29 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3225F86228308D4600B10A29 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		3225F87B28308D4600B10A29 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		3225F87C28308D4600B10A29 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		3225F87E28308D4600B10A29 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = L5KK6CA6C6;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Can_MoneyBox/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.cantuntas.Can-MoneyBox";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		3225F87F28308D4600B10A29 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = L5KK6CA6C6;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Can_MoneyBox/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.cantuntas.Can-MoneyBox";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		3225F88128308D4600B10A29 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = L5KK6CA6C6;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.cantuntas.Can-MoneyBoxTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Can_MoneyBox.app/Can_MoneyBox";
+			};
+			name = Debug;
+		};
+		3225F88228308D4600B10A29 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = L5KK6CA6C6;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.cantuntas.Can-MoneyBoxTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Can_MoneyBox.app/Can_MoneyBox";
+			};
+			name = Release;
+		};
+		3225F88428308D4600B10A29 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = L5KK6CA6C6;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.cantuntas.Can-MoneyBoxUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Can_MoneyBox;
+			};
+			name = Debug;
+		};
+		3225F88528308D4600B10A29 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = L5KK6CA6C6;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.cantuntas.Can-MoneyBoxUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Can_MoneyBox;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3225F84E28308D4500B10A29 /* Build configuration list for PBXProject "Can_MoneyBox" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3225F87B28308D4600B10A29 /* Debug */,
+				3225F87C28308D4600B10A29 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3225F87D28308D4600B10A29 /* Build configuration list for PBXNativeTarget "Can_MoneyBox" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3225F87E28308D4600B10A29 /* Debug */,
+				3225F87F28308D4600B10A29 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3225F88028308D4600B10A29 /* Build configuration list for PBXNativeTarget "Can_MoneyBoxTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3225F88128308D4600B10A29 /* Debug */,
+				3225F88228308D4600B10A29 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3225F88328308D4600B10A29 /* Build configuration list for PBXNativeTarget "Can_MoneyBoxUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3225F88428308D4600B10A29 /* Debug */,
+				3225F88528308D4600B10A29 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 3225F84B28308D4500B10A29 /* Project object */;
+}
