@@ -9,12 +9,13 @@ import Foundation
 
 protocol RequestProtocol {
     
+    associatedtype Response
     var path: String { set get }
     var httpMethod: RequestMethod { set get }
     var headers: Dictionary<String,String> { set get }
-    var httpBody: [String:Any] { set get } //body of url when using post methot
+    var httpBody: [String:Any] { set get } 
     var bearerToken:String? { set get }
-    func decode<T:Decodable>(_ data: Data) throws -> T?
+    func decode(_ data: Data) throws -> Response
 }
 
 extension RequestProtocol {
@@ -58,11 +59,6 @@ extension RequestProtocol {
         }
         
         return urlRequest
-    }
-    
-    func decode<T:Decodable>(_ data: Data) throws -> T? {
-        let decoder = JSONDecoder()
-        return try decoder.decode(T?.self, from: data)
     }
     
 }
