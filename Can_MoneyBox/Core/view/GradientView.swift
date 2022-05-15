@@ -12,9 +12,9 @@ public class GradientView: UIView {
     @IBInspectable var startColor: UIColor = .black { didSet { updateColors() }}
     @IBInspectable var endColor: UIColor = .white { didSet { updateColors() }}
     @IBInspectable var startLocation: Double =  0.05 { didSet { updateLocations() }}
-    @IBInspectable var endLocation:   Double =  0.95 { didSet { updateLocations() }}
-    @IBInspectable var horizontalMode:  Bool =  false { didSet { updatePoints() }}
-    @IBInspectable var diagonalMode:    Bool =  false { didSet { updatePoints() }}
+    @IBInspectable var endLocation: Double =  0.95 { didSet { updateLocations() }}
+    @IBInspectable var horizontalMode: Bool =  false { didSet { updatePoints() }}
+    @IBInspectable var diagonalMode: Bool =  false { didSet { updatePoints() }}
     
     override public class var layerClass: AnyClass { CAGradientLayer.self }
     

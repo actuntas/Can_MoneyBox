@@ -17,7 +17,7 @@ class LoginVC: UIViewController {
     private lazy var loginButton: MMButton = { // Can add target here because it's lazy
         let button = MMButton(backgroundColor: .clear, title: "LOG IN")
         button.addTarget(self, action: #selector(self.loginPressed), for: .touchUpInside)
-        //button.isEnabled = false
+        button.isEnabled = false
         return button
     }()
     
@@ -33,6 +33,7 @@ class LoginVC: UIViewController {
         passwordTextField.delegate = self
         view.addSubview(loginButton)
         layoutLoginButton()
+        viewModel.output = self
     }
     
     private func layoutLoginButton() {
@@ -44,7 +45,11 @@ class LoginVC: UIViewController {
         ])
     }
     
-    private func navigate(datasource: LoginViewModelDatasource) {
+    private func changeButtonState(shouldEnable: Bool) {
+        loginButton.isEnabled = shouldEnable
+    }
+    
+    private func navigateAndInjectDatasource(datasource: LoginViewModelDatasource) {
         print(datasource.name)
     }
     
@@ -55,17 +60,26 @@ class LoginVC: UIViewController {
                 //self.showAlert(error)
             } else if let _datasource = datasource {
                 DispatchQueue.main.async {
-                    self?.navigate(datasource: _datasource)
+                    self?.navigateAndInjectDatasource(datasource: _datasource)
                 }
             }
         }
     }
-
 }
-
 
 extension LoginVC: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
-        
+        let success = viewModel.isValid(text: emailTextField.text, type: .email) && viewModel.isValid(text: passwordTextField.text, type: .password)
+        changeButtonState(shouldEnable: success)
+    }
+}
+
+extension LoginVC: LoginViewModelOutput {
+    func handleEmailError(_ shouldShowError: Bool) {
+        emailErrorLabel.alpha = shouldShowError ? 1 : 0
+    }
+    
+    func handlePasswordError(_ shouldShowError: Bool) {
+        passwordErrorLabel.alpha = shouldShowError ? 1 : 0
     }
 }

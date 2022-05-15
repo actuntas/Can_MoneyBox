@@ -31,7 +31,7 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="htv-bb-GyS">
                                                 <rect key="frame" x="0.0" y="0.0" width="290" height="67"/>
                                                 <subviews>
-                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="test+ios@moneyboxapp.com" borderStyle="roundedRect" placeholder="E-MAIL" textAlignment="center" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="a02-hf-JBo" customClass="LoginTextfield" customModule="Can_MoneyBox" customModuleProvider="target">
+                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="E-MAIL" textAlignment="center" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="a02-hf-JBo" customClass="LoginTextfield" customModule="Can_MoneyBox" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="290" height="50"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="50" id="JUe-Qg-vis"/>
@@ -68,7 +68,7 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="zBn-F9-2w5">
                                                 <rect key="frame" x="0.0" y="77" width="290" height="67"/>
                                                 <subviews>
-                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="P455word12" borderStyle="roundedRect" placeholder="PASSWORD" textAlignment="center" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="AiJ-bD-jsm" customClass="LoginTextfield" customModule="Can_MoneyBox" customModuleProvider="target">
+                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="PASSWORD" textAlignment="center" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="AiJ-bD-jsm" customClass="LoginTextfield" customModule="Can_MoneyBox" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="290" height="50"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="50" id="tT3-eu-hKp"/>
