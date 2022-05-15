@@ -7,9 +7,7 @@
 
 import Foundation
 
-struct LoginResponse:  Decodable {
-    
-    typealias Response = LoginResponse
+struct LoginResponse: Decodable {
     
     let user: User
     let session: Session

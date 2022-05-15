@@ -46,7 +46,12 @@ class LoginVC: UIViewController {
     }
     
     private func navigateAndInjectDatasource(datasource: LoginViewModelDatasource) {
-        print(datasource.name)
+        let storyboard = UIStoryboard(name: "Accounts", bundle: nil)
+        guard let accountsNC = storyboard.instantiateViewController(withIdentifier: "AccountsRoot") as? UINavigationController, let accountsVC = accountsNC.viewControllers.first as? AccountsVC else { return }
+        accountsNC.modalPresentationStyle = .fullScreen
+        let accountsViewModel = AccountsViewModel(service: DefaultNetworkService(), name: datasource.name)
+        accountsVC.viewModel = accountsViewModel
+        show(accountsNC, sender: nil)
     }
     
     private func changeButtonState(shouldEnable: Bool) {

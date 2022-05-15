@@ -12,13 +12,8 @@ protocol LoginViewModelOutput: AnyObject {
     func handlePasswordError(shouldShowError: Bool)
 }
 
-enum LoginViewModelInput {
-    case email, password
-}
-
 struct LoginViewModelDatasource {
     let name: String
-    let user: User
 }
 
 final class LoginViewModel {
@@ -42,7 +37,7 @@ final class LoginViewModel {
             case .success(let user):
                 let token = user.session.bearerToken
                 self?.cacheToken(token: token)
-                let datasource = LoginViewModelDatasource(name: user.user.firstName, user: user.user) // will eleminate unnecessary information soon
+                let datasource = LoginViewModelDatasource(name: user.user.firstName)
                 completion(datasource, nil)
             case .failure(let error):
                 completion(nil, error)

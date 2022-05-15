@@ -51,7 +51,7 @@ extension RequestProtocol {
             urlRequest.allHTTPHeaderFields = headers
         }
         if bearerToken != nil {
-            urlRequest.setValue(bearerToken, forHTTPHeaderField: "Authorization")
+            urlRequest.setValue("Bearer \(String(describing: bearerToken))", forHTTPHeaderField: "Authorization")
         }
         urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
         if !httpBody.isEmpty {

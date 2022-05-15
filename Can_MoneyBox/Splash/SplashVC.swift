@@ -13,10 +13,10 @@ class SplashVC: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        loadLogin()
+        loadLoginScreen()
     }
     
-    private func loadLogin() {
+    private func loadLoginScreen() {
         let storyboard = UIStoryboard(name: "Login", bundle: nil)
         loginVC = storyboard.instantiateViewController(withIdentifier: Identifiers.loginVC) as? LoginVC
         loginVC.modalPresentationStyle = .fullScreen
