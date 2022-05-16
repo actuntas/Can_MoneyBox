@@ -9,6 +9,7 @@ import Foundation
 
 protocol AccountsViewModelOutput: AnyObject {
     func reloadData()
+    func showAlert(title: String, message: String, buttonTitle: String)
 }
 
 struct AccountsViewModelDatasource {
@@ -41,7 +42,7 @@ final class AccountsViewModel {
                 self?.datasource.products = accountData.productResponses
                 self?.output?.reloadData()
             case .failure(let error):
-                print(error.rawValue)
+                self?.output?.showAlert(title: "Error", message: error.localizedDescription, buttonTitle: "Ok")
             }
         }
     }

@@ -7,9 +7,12 @@
 
 import UIKit
 
+private typealias ActionHandlers = LoadingHandler & ErrorHandler
+
 class AccountsVC: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var logoutButton: UIBarButtonItem!
     
     var viewModel: AccountsViewModel!
     
@@ -24,8 +27,17 @@ class AccountsVC: UIViewController {
     
     private func configure() {
         viewModel.output = self
+        
     }
-
+    @IBAction func logoutPressed(_ sender: Any) {
+        showLoading()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.7) {
+            self.logoutButton.isEnabled = false
+            UserDefaults.standard.removeObject(forKey: UserDefaultKeys.Token)
+            self.dismiss(animated: true)
+        }
+    }
+    
 }
 
 extension AccountsVC: UITableViewDelegate, UITableViewDataSource {
@@ -52,7 +64,6 @@ extension AccountsVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         DispatchQueue.main.async {
-            
             tableView.deselectRow(at: indexPath, animated: true)
             
             let selectedProduct = self.viewModel.datasource.products[indexPath.row]
@@ -66,7 +77,8 @@ extension AccountsVC: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
-extension AccountsVC: AccountsViewModelOutput {
+extension AccountsVC: AccountsViewModelOutput, ActionHandlers {
+    
     func reloadData() {
         DispatchQueue.main.async {
             self.tableView.reloadData()
