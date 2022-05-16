@@ -7,7 +7,9 @@
 
 import UIKit
 
-class LoginVC: UIViewController {
+private typealias ActionHandlers = LoadingHandler & ErrorHandler
+
+class LoginVC: UIViewController, ActionHandlers {
     
     @IBOutlet weak var emailTextField: LoginTextfield!
     @IBOutlet weak var passwordTextField: LoginTextfield!
@@ -46,6 +48,8 @@ class LoginVC: UIViewController {
     }
     
     private func navigateAndInjectDatasource(datasource: LoginViewModelDatasource) {
+        changeButtonState(shouldEnable: false)
+        
         let storyboard = UIStoryboard(name: Storyboards.Accounts, bundle: nil)
         guard let accountsNC = storyboard.instantiateViewController(withIdentifier: Identifiers.AccountsNC) as? UINavigationController,
               let accountsVC = accountsNC.viewControllers.first as? AccountsVC else { return }
@@ -65,13 +69,15 @@ class LoginVC: UIViewController {
     }
     
     @objc private func loginPressed() {
+        self.showLoading()
         guard let email = emailTextField.text, let password = passwordTextField.text else { return }
         viewModel.login(email: email, password: password) { [weak self] datasource, error in
             if error != nil {
-                //self.showAlert(error)
+                self?.showAlert(title: "Error", message: error?.localizedDescription ?? "Bad stuff happened", buttonTitle: "Ok")
             } else if let _datasource = datasource {
                 DispatchQueue.main.async {
                     self?.navigateAndInjectDatasource(datasource: _datasource)
+                    self?.removeLoading()
                 }
             }
         }

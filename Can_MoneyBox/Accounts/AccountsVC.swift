@@ -31,11 +31,11 @@ class AccountsVC: UIViewController {
 extension AccountsVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        viewModel.hello
+        viewModel.titleForHeaderInSection
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        viewModel.datasource.products.count
+        viewModel.numberOfRowsInSection
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -50,8 +50,11 @@ extension AccountsVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
         DispatchQueue.main.async {
+            
             tableView.deselectRow(at: indexPath, animated: true)
+            
             let selectedProduct = self.viewModel.datasource.products[indexPath.row]
             let detailsViewModel = AccountDetailsViewModel(service: DefaultNetworkService())
             let storyboard = UIStoryboard(name: Storyboards.AccountDetails, bundle: nil)
@@ -60,8 +63,6 @@ extension AccountsVC: UITableViewDelegate, UITableViewDataSource {
             detailsVC.selectedProduct = selectedProduct
             self.show(detailsVC, sender: nil)
         }
-        
-        
     }
 }
 

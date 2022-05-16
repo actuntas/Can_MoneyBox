@@ -18,13 +18,13 @@ struct AccountsViewModelDatasource {
 final class AccountsViewModel {
     
     let service: NetworkService
-    let hello: String
+    let name: String
     var datasource = AccountsViewModelDatasource()
     weak var output: AccountsViewModelOutput?
     
     init(service: NetworkService, name: String) {
         self.service = service
-        self.hello = "Hi, \(name)"
+        self.name = name
     }
     
     var request = AccountsRequest()
@@ -44,6 +44,16 @@ final class AccountsViewModel {
                 print(error.rawValue)
             }
         }
+    }
+}
+
+extension AccountsViewModel {
+    var numberOfRowsInSection: Int {
+        datasource.products.count
+    }
+    
+    var titleForHeaderInSection: String {
+        "Hi, \(name)"
     }
 }
 
