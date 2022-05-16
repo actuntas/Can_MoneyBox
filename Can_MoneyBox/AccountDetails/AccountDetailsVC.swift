@@ -15,8 +15,8 @@ class AccountDetailsVC: UIViewController {
     var viewModel: AccountDetailsViewModel!
     var selectedProduct: ProductResponse?
     
-    private lazy var addAmountButton: MMButton = {
-        let button = MMButton(backgroundColor: .white, title: "Add £ 10 ♥️")
+    private lazy var addAmountButton: RoundedButton = {
+        let button = RoundedButton(backgroundColor: .white, title: "Add £ 10 ♥️")
         button.addTarget(self, action: #selector(incrementAmountByTen), for: .touchUpInside)
         return button
     }()
@@ -46,6 +46,7 @@ class AccountDetailsVC: UIViewController {
     }
     
     @objc private func incrementAmountByTen() {
+        print("tapped")
         viewModel.incrementAmountByTen(amount: "10", productId: String(selectedProduct?.id ?? 0)) { result in
             switch result {
                 

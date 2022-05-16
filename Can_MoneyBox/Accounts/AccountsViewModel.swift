@@ -54,7 +54,7 @@ extension AccountsViewModel {
     }
     
     var titleForHeaderInSection: String {
-        "Hi, \(name)"
+        "Welcome, \(name)"
     }
 }
 

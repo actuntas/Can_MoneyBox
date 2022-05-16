@@ -47,6 +47,8 @@ final class LoginViewModel {
     
     private func cacheToken(token: String) {
         UserDefaults.standard.set(token, forKey: UserDefaultKeys.Token)
+        let tokenExpireDate = Date().addingTimeInterval(TimeInterval(260))
+        UserDefaults.standard.set(tokenExpireDate, forKey: UserDefaultKeys.TokenExpireDate)
     }
     
 }

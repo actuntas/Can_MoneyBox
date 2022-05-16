@@ -16,8 +16,8 @@ class LoginVC: UIViewController, ActionHandlers {
     @IBOutlet weak var emailErrorLabel: UILabel!
     @IBOutlet weak var passwordErrorLabel: UILabel!
     
-    private lazy var loginButton: MMButton = { // Can add target here because it's lazy
-        let button = MMButton(backgroundColor: .clear, title: "LOG IN")
+    private lazy var loginButton: RoundedButton = { // Can add target here because it's lazy
+        let button = RoundedButton(backgroundColor: .clear, title: "LOG IN")
         button.addTarget(self, action: #selector(self.loginPressed), for: .touchUpInside)
         button.isEnabled = false
         return button

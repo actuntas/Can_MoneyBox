@@ -23,6 +23,7 @@ enum Storyboards {
 }
 
 enum UserDefaultKeys {
-    static let Token = "token"
+    static let Token = "Token"
+    static let TokenExpireDate = "TokenExpireDate"
 }
 

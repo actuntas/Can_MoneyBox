@@ -20,8 +20,23 @@ class DefaultNetworkService: NetworkService {
         self.urlSession = urlSession
     }
     
+    private var tokenExpirationDate: Date? {
+        UserDefaults.standard.object(forKey: UserDefaultKeys.TokenExpireDate) as? Date
+    }
+    
+    private var shouldRefreshToken: Bool {
+        guard let expireDate = tokenExpirationDate else { return false }
+        let currentDate = Date()
+        let oneMinute: TimeInterval = 60
+        return currentDate.addingTimeInterval(oneMinute) >= expireDate
+    }
+
     func perform<Request:RequestProtocol>(_ request: Request, completion: @escaping (Result<Request.Response, NetworkError>) -> Void) {
-        // token refresh mechanism
+        
+        if shouldRefreshToken {
+            //refresh somehow
+        }
+        
         guard let urlRequest = try? request.createURLRequest() else {
             completion(.failure(.invalidURL))
             return

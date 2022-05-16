@@ -29,7 +29,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SIX-fq-yau" customClass="RoundedShadowView" customModule="Can_MoneyBox" customModuleProvider="target">
-                                                    <rect key="frame" x="36" y="27" width="342" height="123"/>
+                                                    <rect key="frame" x="36" y="19" width="342" height="139"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j6b-CJ-FJi">
                                                             <rect key="frame" x="48" y="22" width="42" height="21"/>
@@ -44,9 +44,9 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="trailingMargin" secondItem="SIX-fq-yau" secondAttribute="trailing" constant="16" id="06f-fb-abZ"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="SIX-fq-yau" secondAttribute="bottom" constant="16" id="PWw-f1-iIC"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="SIX-fq-yau" secondAttribute="bottom" constant="8" id="PWw-f1-iIC"/>
                                                 <constraint firstItem="SIX-fq-yau" firstAttribute="leading" secondItem="oPz-KM-7po" secondAttribute="leadingMargin" constant="16" id="TX6-cl-mGA"/>
-                                                <constraint firstItem="SIX-fq-yau" firstAttribute="top" secondItem="oPz-KM-7po" secondAttribute="topMargin" constant="16" id="bRb-T2-FRg"/>
+                                                <constraint firstItem="SIX-fq-yau" firstAttribute="top" secondItem="oPz-KM-7po" secondAttribute="topMargin" constant="8" id="bRb-T2-FRg"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>

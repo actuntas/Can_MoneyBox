@@ -17,7 +17,7 @@ final class AccountDetailsViewModel {
     
     func incrementAmountByTen(amount: String, productId: String, completion: @escaping(Result<String?, NetworkError>) -> Void) {
         var request = IncrementRequest()
-        guard let token = UserDefaults.standard.string(forKey: "token") else { return }
+        guard let token = UserDefaults.standard.string(forKey: UserDefaultKeys.Token) else { return }
         request.headers.updateValue("Bearer \(token)", forKey: "Authorization")
         request.httpBody = ["Amount":amount, "InvestorProductId":productId]
         
