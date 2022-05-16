@@ -46,8 +46,9 @@ class LoginVC: UIViewController {
     }
     
     private func navigateAndInjectDatasource(datasource: LoginViewModelDatasource) {
-        let storyboard = UIStoryboard(name: "Accounts", bundle: nil)
-        guard let accountsNC = storyboard.instantiateViewController(withIdentifier: "AccountsRoot") as? UINavigationController, let accountsVC = accountsNC.viewControllers.first as? AccountsVC else { return }
+        let storyboard = UIStoryboard(name: Storyboards.Accounts, bundle: nil)
+        guard let accountsNC = storyboard.instantiateViewController(withIdentifier: Identifiers.AccountsNC) as? UINavigationController,
+              let accountsVC = accountsNC.viewControllers.first as? AccountsVC else { return }
         accountsNC.modalPresentationStyle = .fullScreen
         let accountsViewModel = AccountsViewModel(service: DefaultNetworkService(), name: datasource.name)
         accountsVC.viewModel = accountsViewModel
@@ -56,6 +57,11 @@ class LoginVC: UIViewController {
     
     private func changeButtonState(shouldEnable: Bool) {
         loginButton.isEnabled = shouldEnable
+    }
+    
+    private func checkValidation() -> Bool {
+        viewModel.validateAndUpdateErrors(text: emailTextField.text, type: .email) &&
+        viewModel.validateAndUpdateErrors(text: passwordTextField.text, type: .password)
     }
     
     @objc private func loginPressed() {
@@ -74,8 +80,7 @@ class LoginVC: UIViewController {
 
 extension LoginVC: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
-        let success = viewModel.validateAndUpdateErrors(text: emailTextField.text, type: .email) && viewModel.validateAndUpdateErrors(text: passwordTextField.text, type: .password)
-        changeButtonState(shouldEnable: success)
+        changeButtonState(shouldEnable: checkValidation())
     }
 }
 

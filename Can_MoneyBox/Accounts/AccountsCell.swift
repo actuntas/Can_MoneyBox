@@ -12,11 +12,8 @@ class AccountsCell: UITableViewCell {
     @IBOutlet weak var cardView: RoundedShadowView!
     @IBOutlet weak var accountNameLabel: UILabel!
     
-    static let reuseIdentifier = "AccountCell"
-    
     override func awakeFromNib() {
         super.awakeFromNib()
-        
     }
     
     internal func populate(for product: ProductResponse) {

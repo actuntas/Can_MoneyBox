@@ -46,7 +46,7 @@ final class LoginViewModel {
     }
     
     private func cacheToken(token: String) {
-        UserDefaults.standard.set(token, forKey: "token")
+        UserDefaults.standard.set(token, forKey: UserDefaultKeys.Token)
     }
     
 }
@@ -59,9 +59,12 @@ extension LoginViewModel {
                 output?.handleEmailError(shouldShowError: true)
                 return false
             }
-            let success = email.count > 8 
+            let regEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+            let emailPredicate = NSPredicate(format:"SELF MATCHES %@", regEx)
+            let success = emailPredicate.evaluate(with: text)
             output?.handleEmailError(shouldShowError: !success)
             return success
+            
         case .password:
             guard let password = text, !password.isEmpty else {
                 output?.handlePasswordError(shouldShowError: true)

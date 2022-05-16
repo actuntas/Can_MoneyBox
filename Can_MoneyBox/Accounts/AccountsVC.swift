@@ -12,7 +12,6 @@ class AccountsVC: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     var viewModel: AccountsViewModel!
-    var datasource: AccountsViewModelDatasource!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,7 +31,7 @@ class AccountsVC: UIViewController {
 extension AccountsVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        viewModel.name
+        viewModel.hello
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -44,7 +43,7 @@ extension AccountsVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: AccountsCell.reuseIdentifier, for: indexPath) as? AccountsCell else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: Identifiers.AccountsCell, for: indexPath) as? AccountsCell else { return UITableViewCell() }
         let account = viewModel.datasource.products[indexPath.row]
         cell.populate(for: account)
         return cell
@@ -54,9 +53,9 @@ extension AccountsVC: UITableViewDelegate, UITableViewDataSource {
         DispatchQueue.main.async {
             tableView.deselectRow(at: indexPath, animated: true)
             let selectedProduct = self.viewModel.datasource.products[indexPath.row]
-            let detailsViewModel = AccountDetailViewModel(service: DefaultNetworkService())
-            let storyboard = UIStoryboard(name: "AccountDetails", bundle: nil)
-            guard let detailsVC = storyboard.instantiateViewController(withIdentifier: "AccountDetailsVC") as? AccountDetailsVC else { return }
+            let detailsViewModel = AccountDetailsViewModel(service: DefaultNetworkService())
+            let storyboard = UIStoryboard(name: Storyboards.AccountDetails, bundle: nil)
+            guard let detailsVC = storyboard.instantiateViewController(withIdentifier: Identifiers.AccountDetailsVC) as? AccountDetailsVC else { return }
             detailsVC.viewModel = detailsViewModel
             detailsVC.selectedProduct = selectedProduct
             self.show(detailsVC, sender: nil)

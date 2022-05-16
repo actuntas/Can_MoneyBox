@@ -12,11 +12,11 @@ class AccountDetailsVC: UIViewController {
     @IBOutlet weak var detailCardView: RoundedShadowView!
     @IBOutlet weak var productNameLabel: UILabel!
     
-    var viewModel: AccountDetailViewModel!
+    var viewModel: AccountDetailsViewModel!
     var selectedProduct: ProductResponse?
     
     private lazy var addAmountButton: MMButton = {
-        let button = MMButton(backgroundColor: .white, title: "Add 10 pound")
+        let button = MMButton(backgroundColor: .white, title: "Add £ 10 ♥️")
         button.addTarget(self, action: #selector(incrementAmountByTen), for: .touchUpInside)
         return button
     }()
@@ -38,12 +38,21 @@ class AccountDetailsVC: UIViewController {
         ])
     }
     
+    private func updateAmount(newAmount: String?) {
+        guard let newAmount = newAmount else { return }
+        print(newAmount)
+        //display
+
+    }
+    
     @objc private func incrementAmountByTen() {
         viewModel.incrementAmountByTen(amount: "10", productId: String(selectedProduct?.id ?? 0)) { result in
             switch result {
                 
-            case .success(_):
-                print("success")
+            case .success(let newAmount):
+                DispatchQueue.main.async {
+                    self.updateAmount(newAmount: newAmount)
+                }
             case .failure(_):
                 print("failed")
             }

@@ -18,20 +18,20 @@ struct AccountsViewModelDatasource {
 final class AccountsViewModel {
     
     let service: NetworkService
-    let name: String
+    let hello: String
     var datasource = AccountsViewModelDatasource()
     weak var output: AccountsViewModelOutput?
     
     init(service: NetworkService, name: String) {
         self.service = service
-        self.name = name
+        self.hello = "Hi, \(name)"
     }
     
-    
+    var request = AccountsRequest()
     
     func getAccounts() {
-        var request = AccountsRequest()
-        guard let token = UserDefaults.standard.string(forKey: "token") else { return }
+        
+        guard let token = UserDefaults.standard.string(forKey: UserDefaultKeys.Token) else { return }
         request.headers.updateValue("Bearer \(token)", forKey: "Authorization")
         
         service.perform(request) { [weak self] result in

@@ -21,7 +21,7 @@ class DefaultNetworkService: NetworkService {
     }
     
     func perform<Request:RequestProtocol>(_ request: Request, completion: @escaping (Result<Request.Response, NetworkError>) -> Void) {
-        
+        // token refresh mechanism
         guard let urlRequest = try? request.createURLRequest() else {
             completion(.failure(.invalidURL))
             return

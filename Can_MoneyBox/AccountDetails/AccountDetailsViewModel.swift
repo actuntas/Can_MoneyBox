@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class AccountDetailViewModel {
+final class AccountDetailsViewModel {
     
     let service: NetworkService
     
@@ -15,7 +15,7 @@ final class AccountDetailViewModel {
         self.service = service
     }
     
-    func incrementAmountByTen(amount: String, productId: String, completion: @escaping(Result<IncrementResponse, NetworkError>) -> Void) {
+    func incrementAmountByTen(amount: String, productId: String, completion: @escaping(Result<String?, NetworkError>) -> Void) {
         var request = IncrementRequest()
         guard let token = UserDefaults.standard.string(forKey: "token") else { return }
         request.headers.updateValue("Bearer \(token)", forKey: "Authorization")
@@ -24,11 +24,11 @@ final class AccountDetailViewModel {
         service.perform(request) { result in
             switch result {
                 
-            case .success(let newAmount):
-                print(newAmount)
-                //send to vc and update
+            case .success(let amountData):
+                let newAmount = String(amountData.moneybox)
+                completion(.success(newAmount))
             case .failure(let error):
-                print(error.rawValue)
+                completion(.failure(error))
             }
         }
     }

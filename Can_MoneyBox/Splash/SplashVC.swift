@@ -17,8 +17,8 @@ class SplashVC: UIViewController {
     }
     
     private func loadLoginScreen() {
-        let storyboard = UIStoryboard(name: "Login", bundle: nil)
-        loginVC = storyboard.instantiateViewController(withIdentifier: Identifiers.loginVC) as? LoginVC
+        let storyboard = UIStoryboard(name: Storyboards.Login, bundle: nil)
+        loginVC = storyboard.instantiateViewController(withIdentifier: Identifiers.LoginVC) as? LoginVC
         loginVC.modalPresentationStyle = .fullScreen
         let service = DefaultNetworkService()
         let viewModel = LoginViewModel(service: service)
