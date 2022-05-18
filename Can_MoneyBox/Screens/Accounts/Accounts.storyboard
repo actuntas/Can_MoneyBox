@@ -29,24 +29,52 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SIX-fq-yau" customClass="RoundedShadowView" customModule="Can_MoneyBox" customModuleProvider="target">
-                                                    <rect key="frame" x="36" y="19" width="342" height="139"/>
+                                                    <rect key="frame" x="36" y="17" width="342" height="143"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j6b-CJ-FJi">
-                                                            <rect key="frame" x="48" y="22" width="42" height="21"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j6b-CJ-FJi">
+                                                            <rect key="frame" x="12" y="8" width="318" height="24"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="24" id="e27-Q1-KOj"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logoMoneyBox" translatesAutoresizingMaskIntoConstraints="NO" id="bCa-FL-S1X">
+                                                            <rect key="frame" x="180" y="76" width="150" height="55"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="150" id="Hgn-5F-blZ"/>
+                                                                <constraint firstAttribute="height" constant="55" id="KYS-if-3PH"/>
+                                                            </constraints>
+                                                        </imageView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oR0-SY-U71">
+                                                            <rect key="frame" x="12" y="44" width="318" height="17"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="17" id="R9J-yb-2DE"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="bottom" secondItem="bCa-FL-S1X" secondAttribute="bottom" constant="12" id="6dl-s1-yjH"/>
+                                                        <constraint firstAttribute="trailing" secondItem="bCa-FL-S1X" secondAttribute="trailing" constant="12" id="Fj3-D3-FMs"/>
+                                                        <constraint firstItem="j6b-CJ-FJi" firstAttribute="leading" secondItem="SIX-fq-yau" secondAttribute="leading" constant="12" id="Ged-qK-UKG"/>
+                                                        <constraint firstItem="oR0-SY-U71" firstAttribute="top" secondItem="j6b-CJ-FJi" secondAttribute="bottom" constant="12" id="K9k-Ca-kmn"/>
+                                                        <constraint firstItem="oR0-SY-U71" firstAttribute="trailing" secondItem="j6b-CJ-FJi" secondAttribute="trailing" id="Lty-Tt-q8A"/>
+                                                        <constraint firstAttribute="trailing" secondItem="j6b-CJ-FJi" secondAttribute="trailing" constant="12" id="Mqv-l2-i4Q"/>
+                                                        <constraint firstItem="j6b-CJ-FJi" firstAttribute="top" secondItem="SIX-fq-yau" secondAttribute="top" constant="8" id="PtJ-5P-ZJN"/>
+                                                        <constraint firstItem="oR0-SY-U71" firstAttribute="leading" secondItem="j6b-CJ-FJi" secondAttribute="leading" id="lT0-4e-bGj"/>
+                                                    </constraints>
                                                 </view>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="trailingMargin" secondItem="SIX-fq-yau" secondAttribute="trailing" constant="16" id="06f-fb-abZ"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="SIX-fq-yau" secondAttribute="bottom" constant="8" id="PWw-f1-iIC"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="SIX-fq-yau" secondAttribute="bottom" constant="6" id="PWw-f1-iIC"/>
                                                 <constraint firstItem="SIX-fq-yau" firstAttribute="leading" secondItem="oPz-KM-7po" secondAttribute="leadingMargin" constant="16" id="TX6-cl-mGA"/>
-                                                <constraint firstItem="SIX-fq-yau" firstAttribute="top" secondItem="oPz-KM-7po" secondAttribute="topMargin" constant="8" id="bRb-T2-FRg"/>
+                                                <constraint firstItem="SIX-fq-yau" firstAttribute="top" secondItem="oPz-KM-7po" secondAttribute="topMargin" constant="6" id="bRb-T2-FRg"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -109,6 +137,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="logoMoneyBox" width="300" height="70"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
