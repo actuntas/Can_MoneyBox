@@ -64,7 +64,7 @@ extension AccountsVC: UITableViewDelegate, UITableViewDataSource {
             tableView.deselectRow(at: indexPath, animated: true)
             
             let selectedProduct = self.viewModel.datasource.products[indexPath.row]
-            let detailsViewModel = AccountDetailsViewModel(service: DefaultNetworkService(), product: selectedProduct)
+            let detailsViewModel = AccountDetailsViewModel(service: DefaultNetworkService(), product: selectedProduct, email: self.viewModel.datasource.securedData.email)
             let storyboard = UIStoryboard(name: Storyboards.AccountDetails, bundle: nil)
             guard let detailsVC = storyboard.instantiateViewController(withIdentifier: Identifiers.AccountDetailsVC) as? AccountDetailsVC else { return }
             detailsVC.viewModel = detailsViewModel

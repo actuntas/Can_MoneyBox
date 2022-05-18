@@ -14,19 +14,22 @@ protocol AccountDetailsViewModelProtocol: AnyObject {
 
 struct AccountDetailsViewModelDatasource {
     let product: ProductResponse
+    let email: String
 }
 
 final class AccountDetailsViewModel {
     
     private let service: NetworkService
     private var status: AuthorizationStatus = .authorized
+    private let keychain = KeychainManager.standard
     
     var amount: String!
     var datasource: AccountDetailsViewModelDatasource
+    var authData: Auth!
     
-    init(service: NetworkService, product: ProductResponse) {
+    init(service: NetworkService, product: ProductResponse, email: String) {
         self.service = service
-        self.datasource = AccountDetailsViewModelDatasource(product: product)
+        self.datasource = AccountDetailsViewModelDatasource(product: product, email: email)
     }
     
     weak var output: AccountDetailsViewModelProtocol?
@@ -37,10 +40,12 @@ final class AccountDetailsViewModel {
         switch status {
             
         case .authorized:
+            
+            getToken()
+            
             var request = IncrementRequest()
-            guard let token = UserDefaults.standard.string(forKey: UserDefaultKeys.Token) else { return }
-            request.headers.updateValue("Bearer \(token)", forKey: "Authorization")
-            request.httpBody = ["Amount":amount, "InvestorProductId":self.productId]
+            request.headers.updateValue("Bearer \(authData.token)", forKey: "Authorization")
+            request.httpBody = ["Amount":amount, "InvestorProductId":datasource.product.id]
             
             service.perform(request) { [weak self] result in
                 switch result {
@@ -53,22 +58,34 @@ final class AccountDetailsViewModel {
                     
                 case .failure(let error):
                     if error == .invalidCredentials {
-                        self?.refreshToken(email: "test+ios@moneyboxapp.com", password: "P455word12")
+                        guard let email = self?.authData.email,
+                              let password = self?.authData.password else {
+                            DispatchQueue.main.async {
+                                self?.output?.showAlert(title: "Error", message: error.localizedDescription, buttonTitle: "Ok")
+                            }
+                            return
+                        }
+                        self?.refreshToken(email: email, password: password)
                     } else {
-                        //self?.output?.showAlert(title: "Error", message: error.localizedDescription, buttonTitle: "Ok")
+                        DispatchQueue.main.async {
+                            self?.output?.showAlert(title: "Error", message: error.localizedDescription, buttonTitle: "Ok")
+                        }
+                        
                     }
                 }
             }
             
         case .authorizing:
-            DispatchQueue.main.asyncAfter(deadline: .now() + 3) { [weak self] in
-                guard let self = self else { return }
-                self.status = .authorized
-                self.incrementAmountByTen(amount: self.amount)
-            }
+            self.status = .authorized
+            self.incrementAmountByTen(amount: self.amount)
+            
         }
         
-        
+    }
+    
+    private func getToken() {
+        guard let securedData = keychain.read(service: "moneybox.com", account: datasource.email, type: Auth.self) else { return } // alert
+        self.authData = securedData
     }
     
     private func refreshToken(email: String, password: String) {
@@ -81,7 +98,7 @@ final class AccountDetailsViewModel {
                 
             case .success(let user):
                 let token = user.session.bearerToken
-                self?.cacheToken(token: token)
+                self?.cacheToken(token: token, email: email, password: password)
                 DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
                     guard let self = self else { return }
                     self.status = .authorized
@@ -95,8 +112,9 @@ final class AccountDetailsViewModel {
         
     }
     
-    private func cacheToken(token: String) {
-        //KeychainManager.standard.save(<#T##item: Decodable & Encodable##Decodable & Encodable#>, service: <#T##String#>, account: <#T##String#>)
+    private func cacheToken(token: String, email: String, password: String) {
+        let refreshedData = Auth(token: token, email: email, password: password)
+        keychain.save(refreshedData, service: "moneybox", account: email)
     }
     
     private enum AuthorizationStatus {
@@ -104,10 +122,4 @@ final class AccountDetailsViewModel {
         case authorizing
     }
     
-}
-
-extension AccountDetailsViewModel {
-    var productId: String {
-        String(datasource.product.id)
-    }
 }

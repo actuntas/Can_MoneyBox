@@ -8,17 +8,15 @@
 import UIKit
 
 /// change this
-class RoundedShadowView: UIView {
+public class RoundedShadowView: UIView {
     
-    override func awakeFromNib() {
-        layer.cornerRadius = 8
-        layer.borderWidth = 1
-        layer.borderColor = UIColor.white.cgColor
-        layer.shadowOpacity = 0.4
-        layer.shadowRadius = 4
-        layer.shadowOffset = CGSize(width: 1, height: 1)
-        clipsToBounds = false
-        backgroundColor = .red
-    }
+    @IBInspectable var cornerRadius: CGFloat = 8 { didSet { self.layer.cornerRadius = cornerRadius }}
+    @IBInspectable var bgColor: UIColor = .red { didSet { self.backgroundColor = bgColor }}
+    @IBInspectable var borderColor: UIColor = UIColor.white { didSet { self.layer.borderColor = borderColor.cgColor }}
+    @IBInspectable var borderWidth: CGFloat = 1 { didSet { self.layer.borderWidth = borderWidth }}
+    @IBInspectable var shadowOpacity: Float = 0.4 { didSet { self.layer.shadowOpacity = shadowOpacity }}
+    @IBInspectable var shadowRadius: CGFloat = 4 { didSet { self.layer.shadowRadius = shadowRadius }}
+    @IBInspectable var shadowOffset: CGSize = CGSize(width: 1, height: 1) { didSet { self.layer.shadowOffset = shadowOffset }}
+    
 }
 

@@ -15,7 +15,7 @@ protocol AccountsViewModelOutput: AnyObject {
 struct AccountsViewModelDatasource {
     
     var products = [ProductResponse]()
-    var name: String?
+    var name: String
     var securedData: Auth
 }
 

@@ -17,15 +17,15 @@ class LoginTextfield: UITextField {
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        inits()
+        configure()
     }
     
     required override init(frame: CGRect) {
         super.init(frame: frame)
-        inits()
+        configure()
     }
     
-    private func inits() {
+    private func configure() {
         self.addTarget(self, action: #selector(activate), for: .editingDidBegin)
         self.addTarget(self, action: #selector(deactivate), for: .editingDidEnd)
         self.tintColor = .white

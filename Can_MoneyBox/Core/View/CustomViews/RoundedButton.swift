@@ -6,9 +6,8 @@
 //
 
 import UIKit
+// I'm gonna make this nondesignable in order to show programmatic layout skills
 
-/// I'm gonna make this nondesignable in order to show programmatic layout skills and i will be able to use iOS 15's newish configuration API.
-///
 class RoundedButton: UIButton {
     
     override init(frame: CGRect) {

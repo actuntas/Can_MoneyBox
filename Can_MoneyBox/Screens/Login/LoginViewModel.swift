@@ -15,7 +15,7 @@ protocol LoginViewModelOutput: AnyObject {
 }
 
 struct LoginViewModelDatasource {
-    let name: String?
+    let name: String
     let secureData: Auth?
 }
 
