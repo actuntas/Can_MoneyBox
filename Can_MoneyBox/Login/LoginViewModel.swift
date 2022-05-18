@@ -10,10 +10,12 @@ import Foundation
 protocol LoginViewModelOutput: AnyObject {
     func handleEmailError(shouldShowError: Bool)
     func handlePasswordError(shouldShowError: Bool)
+    func loginCompleted(datasource: LoginViewModelDatasource)
+    func showAlert(title: String, message: String, buttonTitle: String)
 }
 
 struct LoginViewModelDatasource {
-    let name: String
+    let name: String?
 }
 
 final class LoginViewModel {
@@ -27,7 +29,7 @@ final class LoginViewModel {
     var request = LoginRequest()
     weak var output: LoginViewModelOutput?
     
-    func login(email: String, password: String, completion: @escaping (LoginViewModelDatasource?, Error?) -> Void) {
+    func login(email: String, password: String) {
         
         request.httpBody = ["Email":email, "Password":password, "Idfa":"idfa"]
         
@@ -38,17 +40,18 @@ final class LoginViewModel {
                 let token = user.session.bearerToken
                 self?.cacheToken(token: token)
                 let datasource = LoginViewModelDatasource(name: user.user.firstName)
-                completion(datasource, nil)
+                self?.output?.loginCompleted(datasource: datasource)
             case .failure(let error):
-                completion(nil, error)
+                DispatchQueue.main.async {
+                    self?.output?.showAlert(title: "Error", message: error.localizedDescription, buttonTitle: "Ok")
+                }
+                
             }
         }
     }
     
-    private func cacheToken(token: String) {
+    private func cacheToken(token: String) { //extension yaz userdefaultsa
         UserDefaults.standard.set(token, forKey: UserDefaultKeys.Token)
-        let tokenExpireDate = Date().addingTimeInterval(TimeInterval(260))
-        UserDefaults.standard.set(tokenExpireDate, forKey: UserDefaultKeys.TokenExpireDate)
     }
     
 }
@@ -61,9 +64,7 @@ extension LoginViewModel {
                 output?.handleEmailError(shouldShowError: true)
                 return false
             }
-            let regEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
-            let emailPredicate = NSPredicate(format:"SELF MATCHES %@", regEx)
-            let success = emailPredicate.evaluate(with: text)
+            let success = email.isEmail
             output?.handleEmailError(shouldShowError: !success)
             return success
             

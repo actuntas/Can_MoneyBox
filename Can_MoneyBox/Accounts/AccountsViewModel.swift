@@ -13,19 +13,20 @@ protocol AccountsViewModelOutput: AnyObject {
 }
 
 struct AccountsViewModelDatasource {
+
     var products = [ProductResponse]()
+    var name: String?
 }
 
 final class AccountsViewModel {
     
     let service: NetworkService
-    let name: String
     var datasource = AccountsViewModelDatasource()
     weak var output: AccountsViewModelOutput?
     
-    init(service: NetworkService, name: String) {
+    init(service: NetworkService, datasource: AccountsViewModelDatasource) {
         self.service = service
-        self.name = name
+        self.datasource = datasource
     }
     
     var request = AccountsRequest()
@@ -54,8 +55,9 @@ extension AccountsViewModel {
     }
     
     var titleForHeaderInSection: String {
-        "Welcome, \(name)"
+        "Welcome, \(String(describing: datasource.name))"
     }
+    
 }
 
 

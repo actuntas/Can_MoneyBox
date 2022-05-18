@@ -47,6 +47,7 @@
 		32912C3E2831D44700D79A91 /* ErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32912C3D2831D44700D79A91 /* ErrorHandler.swift */; };
 		32912C402831D4EA00D79A91 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32912C3F2831D4EA00D79A91 /* LoadingView.swift */; };
 		32912C422831D61500D79A91 /* LoadingHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32912C412831D61500D79A91 /* LoadingHandler.swift */; };
+		32CE461E28343E3C00B520F3 /* String + Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32CE461D28343E3C00B520F3 /* String + Ext.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -110,6 +111,7 @@
 		32912C3D2831D44700D79A91 /* ErrorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorHandler.swift; sourceTree = "<group>"; };
 		32912C3F2831D4EA00D79A91 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		32912C412831D61500D79A91 /* LoadingHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingHandler.swift; sourceTree = "<group>"; };
+		32CE461D28343E3C00B520F3 /* String + Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String + Ext.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -195,51 +197,44 @@
 		3225F88628308DD900B10A29 /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				32912C3C2831D43900D79A91 /* helpers */,
-				32912C1228312E4800D79A91 /* customviews */,
-				32912C092831292B00D79A91 /* utils */,
-				3225F88928308E0800B10A29 /* data */,
-				32912C022831274A00D79A91 /* models */,
+				32CE461C28343E2C00B520F3 /* Extensions */,
+				32912C3C2831D43900D79A91 /* Helpers */,
+				32912C1228312E4800D79A91 /* CustomViews */,
+				32912C092831292B00D79A91 /* Utils */,
+				3225F88928308E0800B10A29 /* Data */,
+				32912C022831274A00D79A91 /* Models */,
 			);
 			path = Core;
 			sourceTree = "<group>";
 		};
-		3225F88928308E0800B10A29 /* data */ = {
+		3225F88928308E0800B10A29 /* Data */ = {
 			isa = PBXGroup;
 			children = (
 				3225F88A28308E7E00B10A29 /* APIConstants.swift */,
-				3225F891283090BA00B10A29 /* network */,
-				3225F88C28308EB600B10A29 /* request */,
+				3225F891283090BA00B10A29 /* Network */,
 			);
-			path = data;
+			path = Data;
 			sourceTree = "<group>";
 		};
-		3225F88C28308EB600B10A29 /* request */ = {
-			isa = PBXGroup;
-			children = (
-				3225F88D28308ECC00B10A29 /* RequestProtocol.swift */,
-				3225F88F2830905700B10A29 /* RequestMethod.swift */,
-			);
-			path = request;
-			sourceTree = "<group>";
-		};
-		3225F891283090BA00B10A29 /* network */ = {
+		3225F891283090BA00B10A29 /* Network */ = {
 			isa = PBXGroup;
 			children = (
 				3225F892283090C800B10A29 /* NetworkError.swift */,
 				3225F894283095BE00B10A29 /* NetworkService.swift */,
+				3225F88D28308ECC00B10A29 /* RequestProtocol.swift */,
+				3225F88F2830905700B10A29 /* RequestMethod.swift */,
 			);
-			path = network;
+			path = Network;
 			sourceTree = "<group>";
 		};
-		32912C022831274A00D79A91 /* models */ = {
+		32912C022831274A00D79A91 /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				32912C1D283138E900D79A91 /* LoginResponse.swift */,
 				32912C1F28316BEB00D79A91 /* AccountResponse.swift */,
 				32912C3A2831B3E700D79A91 /* IncrementResponse.swift */,
 			);
-			path = models;
+			path = Models;
 			sourceTree = "<group>";
 		};
 		32912C032831276600D79A91 /* Login */ = {
@@ -262,16 +257,16 @@
 			path = Splash;
 			sourceTree = "<group>";
 		};
-		32912C092831292B00D79A91 /* utils */ = {
+		32912C092831292B00D79A91 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
 				32912C0A2831294700D79A91 /* Identifiers.swift */,
 				32912C2128316D8100D79A91 /* LoginViewModelInputs.swift */,
 			);
-			path = utils;
+			path = Utils;
 			sourceTree = "<group>";
 		};
-		32912C1228312E4800D79A91 /* customviews */ = {
+		32912C1228312E4800D79A91 /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
 				32912C1328312E6800D79A91 /* GradientView.swift */,
@@ -279,7 +274,7 @@
 				32912C17283134BD00D79A91 /* RoundedButton.swift */,
 				32912C2C28317C2300D79A91 /* RoundedShadowView.swift */,
 			);
-			path = customviews;
+			path = CustomViews;
 			sourceTree = "<group>";
 		};
 		32912C2328316E6A00D79A91 /* Accounts */ = {
@@ -305,14 +300,22 @@
 			path = AccountDetails;
 			sourceTree = "<group>";
 		};
-		32912C3C2831D43900D79A91 /* helpers */ = {
+		32912C3C2831D43900D79A91 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
 				32912C3D2831D44700D79A91 /* ErrorHandler.swift */,
 				32912C3F2831D4EA00D79A91 /* LoadingView.swift */,
 				32912C412831D61500D79A91 /* LoadingHandler.swift */,
 			);
-			path = helpers;
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		32CE461C28343E2C00B520F3 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				32CE461D28343E3C00B520F3 /* String + Ext.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -483,6 +486,7 @@
 				32912C352831AA0F00D79A91 /* AccountDetailsViewModel.swift in Sources */,
 				32912C402831D4EA00D79A91 /* LoadingView.swift in Sources */,
 				32912C06283127F200D79A91 /* SplashVC.swift in Sources */,
+				32CE461E28343E3C00B520F3 /* String + Ext.swift in Sources */,
 				32912C2D28317C2300D79A91 /* RoundedShadowView.swift in Sources */,
 				32912C18283134BD00D79A91 /* RoundedButton.swift in Sources */,
 			);

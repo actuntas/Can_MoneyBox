@@ -7,13 +7,15 @@
 
 import UIKit
 
-class AccountDetailsVC: UIViewController {
+private typealias ActionHandlers = LoadingHandler & ErrorHandler
+
+class AccountDetailsVC: UIViewController, ActionHandlers {
     
     @IBOutlet weak var detailCardView: RoundedShadowView!
     @IBOutlet weak var productNameLabel: UILabel!
+    @IBOutlet weak var amountLabel: UILabel!
     
     var viewModel: AccountDetailsViewModel!
-    var selectedProduct: ProductResponse?
     
     private lazy var addAmountButton: RoundedButton = {
         let button = RoundedButton(backgroundColor: .white, title: "Add £ 10 ♥️")
@@ -23,8 +25,11 @@ class AccountDetailsVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .purple
-        title = (selectedProduct?.product.name ?? "no account")
+        configure()
+    }
+    
+    private func configure() {
+        title = viewModel.datasource.product.product.name
         layAddAmountButton()
     }
     
@@ -39,25 +44,14 @@ class AccountDetailsVC: UIViewController {
     }
     
     private func updateAmount(newAmount: String?) {
-        guard let newAmount = newAmount else { return }
-        print(newAmount)
-        //display
-
+        guard let amount = newAmount else { return }
+        amountLabel.text = amount
+        //self.removeLoading()
     }
     
     @objc private func incrementAmountByTen() {
-        print("tapped")
-        viewModel.incrementAmountByTen(amount: "10", productId: String(selectedProduct?.id ?? 0)) { result in
-            switch result {
-                
-            case .success(let newAmount):
-                DispatchQueue.main.async {
-                    self.updateAmount(newAmount: newAmount)
-                }
-            case .failure(_):
-                print("failed")
-            }
-        }
+        print("pressed")
+        //self.showLoading()
+        viewModel.incrementAmountByTen(amount: "10")
     }
 }
-

@@ -20,8 +20,7 @@ class SplashVC: UIViewController {
         let storyboard = UIStoryboard(name: Storyboards.Login, bundle: nil)
         loginVC = storyboard.instantiateViewController(withIdentifier: Identifiers.LoginVC) as? LoginVC
         loginVC.modalPresentationStyle = .fullScreen
-        let service = DefaultNetworkService()
-        let viewModel = LoginViewModel(service: service)
+        let viewModel = LoginViewModel(service: DefaultNetworkService())
         loginVC.viewModel = viewModel
         self.present(loginVC, animated: false)
     }

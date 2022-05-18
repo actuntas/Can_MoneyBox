@@ -7,7 +7,7 @@
 
 import UIKit
 
-/// This is another approach i use for getting some default configuration. Not that flexible but fast. will change this to designable (hopefully)
+/// change this
 class RoundedShadowView: UIView {
     
     override func awakeFromNib() {

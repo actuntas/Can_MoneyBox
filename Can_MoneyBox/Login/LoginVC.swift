@@ -16,7 +16,7 @@ class LoginVC: UIViewController, ActionHandlers {
     @IBOutlet weak var emailErrorLabel: UILabel!
     @IBOutlet weak var passwordErrorLabel: UILabel!
     
-    private lazy var loginButton: RoundedButton = { // Can add target here because it's lazy
+    private lazy var loginButton: RoundedButton = {
         let button = RoundedButton(backgroundColor: .clear, title: "LOG IN")
         button.addTarget(self, action: #selector(self.loginPressed), for: .touchUpInside)
         button.isEnabled = false
@@ -31,8 +31,6 @@ class LoginVC: UIViewController, ActionHandlers {
     }
     
     private func configure() {
-        emailTextField.delegate = self
-        passwordTextField.delegate = self
         view.addSubview(loginButton)
         layoutLoginButton()
         viewModel.output = self
@@ -49,18 +47,21 @@ class LoginVC: UIViewController, ActionHandlers {
     
     private func navigateAndInjectDatasource(datasource: LoginViewModelDatasource) {
         changeButtonState(shouldEnable: false)
-        
+        self.removeLoading()
         let storyboard = UIStoryboard(name: Storyboards.Accounts, bundle: nil)
         guard let accountsNC = storyboard.instantiateViewController(withIdentifier: Identifiers.AccountsNC) as? UINavigationController,
               let accountsVC = accountsNC.viewControllers.first as? AccountsVC else { return }
         accountsNC.modalPresentationStyle = .fullScreen
-        let accountsViewModel = AccountsViewModel(service: DefaultNetworkService(), name: datasource.name)
+        let accountsViewModel = AccountsViewModel(service: DefaultNetworkService(), datasource: AccountsViewModelDatasource(name: datasource.name))
         accountsVC.viewModel = accountsViewModel
         show(accountsNC, sender: nil)
     }
     
     private func changeButtonState(shouldEnable: Bool) {
-        loginButton.isEnabled = shouldEnable
+        DispatchQueue.main.async {
+            self.loginButton.isEnabled = shouldEnable
+        }
+       
     }
     
     private func checkValidation() -> Bool {
@@ -69,18 +70,9 @@ class LoginVC: UIViewController, ActionHandlers {
     }
     
     @objc private func loginPressed() {
-        self.showLoading()
+        //self.showLoading()
         guard let email = emailTextField.text, let password = passwordTextField.text else { return }
-        viewModel.login(email: email, password: password) { [weak self] datasource, error in
-            if error != nil {
-                self?.showAlert(title: "Error", message: error?.localizedDescription ?? "Bad stuff happened", buttonTitle: "Ok")
-            } else if let _datasource = datasource {
-                DispatchQueue.main.async {
-                    self?.navigateAndInjectDatasource(datasource: _datasource)
-                    self?.removeLoading()
-                }
-            }
-        }
+        viewModel.login(email: email, password: password)
     }
 }
 
@@ -89,8 +81,17 @@ extension LoginVC: UITextFieldDelegate {
         changeButtonState(shouldEnable: checkValidation())
     }
 }
-
+// markları ekle
 extension LoginVC: LoginViewModelOutput {
+    
+    
+    func loginCompleted(datasource: LoginViewModelDatasource) {
+        DispatchQueue.main.async {
+            self.navigateAndInjectDatasource(datasource: datasource)
+        }
+        
+    }
+    
     func handleEmailError(shouldShowError: Bool) {
         emailErrorLabel.alpha = shouldShowError ? 1 : 0
     }
