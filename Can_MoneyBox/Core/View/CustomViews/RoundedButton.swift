@@ -31,7 +31,7 @@ class RoundedButton: UIButton {
     private func configure() {
         layer.cornerRadius = 25
         layer.borderColor = UIColor.purple.cgColor
-        layer.borderWidth = 1
+        layer.borderWidth = 2
         setTitleColor(.white, for: .normal)
         titleLabel?.font = UIFont.preferredFont(forTextStyle: .headline)
         

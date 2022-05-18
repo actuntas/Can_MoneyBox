@@ -13,15 +13,16 @@ protocol AccountsViewModelOutput: AnyObject {
 }
 
 struct AccountsViewModelDatasource {
-
+    
     var products = [ProductResponse]()
     var name: String?
+    var securedData: Auth
 }
 
 final class AccountsViewModel {
     
     let service: NetworkService
-    var datasource = AccountsViewModelDatasource()
+    var datasource: AccountsViewModelDatasource
     weak var output: AccountsViewModelOutput?
     
     init(service: NetworkService, datasource: AccountsViewModelDatasource) {
@@ -33,17 +34,19 @@ final class AccountsViewModel {
     
     func getAccounts() {
         
-        guard let token = UserDefaults.standard.string(forKey: UserDefaultKeys.Token) else { return }
-        request.headers.updateValue("Bearer \(token)", forKey: "Authorization")
+        self.request.headers.updateValue("Bearer \(datasource.securedData.token)", forKey: "Authorization")
         
-        service.perform(request) { [weak self] result in
+        self.service.perform(self.request) { [weak self] result in
             switch result {
             case .success(let accountData):
                 print(accountData)
                 self?.datasource.products = accountData.productResponses
                 self?.output?.reloadData()
             case .failure(let error):
-                self?.output?.showAlert(title: "Error", message: error.localizedDescription, buttonTitle: "Ok")
+                DispatchQueue.main.async {
+                    self?.output?.showAlert(title: "Error", message: error.localizedDescription, buttonTitle: "Ok")
+                }
+                
             }
         }
     }

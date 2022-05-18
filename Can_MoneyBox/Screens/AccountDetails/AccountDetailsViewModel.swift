@@ -96,7 +96,7 @@ final class AccountDetailsViewModel {
     }
     
     private func cacheToken(token: String) {
-        UserDefaults.standard.set(token, forKey: UserDefaultKeys.Token)
+        //KeychainManager.standard.save(<#T##item: Decodable & Encodable##Decodable & Encodable#>, service: <#T##String#>, account: <#T##String#>)
     }
     
     private enum AuthorizationStatus {

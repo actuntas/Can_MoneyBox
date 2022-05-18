@@ -16,11 +16,13 @@ protocol LoginViewModelOutput: AnyObject {
 
 struct LoginViewModelDatasource {
     let name: String?
+    let secureData: Auth?
 }
 
 final class LoginViewModel {
     
     let service: NetworkService
+    let keychain = KeychainManager.standard
     
     init(service: NetworkService) {
         self.service = service
@@ -38,8 +40,8 @@ final class LoginViewModel {
                 
             case .success(let user):
                 let token = user.session.bearerToken
-                self?.cacheToken(token: token)
-                let datasource = LoginViewModelDatasource(name: user.user.firstName)
+                self?.cacheAuth(authData: Auth(token: token, email: email, password: password))
+                let datasource = LoginViewModelDatasource(name: user.user.firstName, secureData: Auth(token: token, email: email, password: password))
                 self?.output?.loginCompleted(datasource: datasource)
             case .failure(let error):
                 DispatchQueue.main.async {
@@ -50,10 +52,13 @@ final class LoginViewModel {
         }
     }
     
-    private func cacheToken(token: String) { //extension yaz userdefaultsa
-        UserDefaults.standard.set(token, forKey: UserDefaultKeys.Token)
+}
+
+extension LoginViewModel {
+    private func cacheAuth(authData: Auth) {
+           self.keychain.save(authData, service: "moneybox.com", account: authData.email)
+            print("cached securely")
     }
-    
 }
 
 extension LoginViewModel {

@@ -7,6 +7,12 @@
 
 import Foundation
 
+struct Auth: Codable {
+    let token: String
+    let email: String
+    let password: String
+}
+
 struct LoginResponse: Decodable {
     
     let user: User

@@ -48,6 +48,8 @@
 		32912C402831D4EA00D79A91 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32912C3F2831D4EA00D79A91 /* LoadingView.swift */; };
 		32912C422831D61500D79A91 /* LoadingHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32912C412831D61500D79A91 /* LoadingHandler.swift */; };
 		32CE461E28343E3C00B520F3 /* String + Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32CE461D28343E3C00B520F3 /* String + Ext.swift */; };
+		32E33DFD283537A60045981D /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32E33DFC283537A60045981D /* KeychainManager.swift */; };
+		32E33DFF283538B90045981D /* KeychainError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32E33DFE283538B90045981D /* KeychainError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -112,6 +114,8 @@
 		32912C3F2831D4EA00D79A91 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		32912C412831D61500D79A91 /* LoadingHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingHandler.swift; sourceTree = "<group>"; };
 		32CE461D28343E3C00B520F3 /* String + Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String + Ext.swift"; sourceTree = "<group>"; };
+		32E33DFC283537A60045981D /* KeychainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainManager.swift; sourceTree = "<group>"; };
+		32E33DFE283538B90045981D /* KeychainError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -213,6 +217,7 @@
 		3225F88628308DD900B10A29 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				32E33DFB283537890045981D /* Keychain */,
 				32912C022831274A00D79A91 /* Model */,
 				32CE461C28343E2C00B520F3 /* Extension */,
 				32912C3C2831D43900D79A91 /* Helper */,
@@ -332,6 +337,15 @@
 				32CE461D28343E3C00B520F3 /* String + Ext.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		32E33DFB283537890045981D /* Keychain */ = {
+			isa = PBXGroup;
+			children = (
+				32E33DFC283537A60045981D /* KeychainManager.swift */,
+				32E33DFE283538B90045981D /* KeychainError.swift */,
+			);
+			path = Keychain;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -493,6 +507,7 @@
 				32912C1A2831367600D79A91 /* LoginViewModel.swift in Sources */,
 				3225F88E28308ECC00B10A29 /* RequestProtocol.swift in Sources */,
 				3225F8902830905700B10A29 /* RequestMethod.swift in Sources */,
+				32E33DFD283537A60045981D /* KeychainManager.swift in Sources */,
 				32912C292831712400D79A91 /* AccountsRequest.swift in Sources */,
 				32912C1428312E6800D79A91 /* GradientView.swift in Sources */,
 				32912C2228316D8100D79A91 /* LoginViewModelInputs.swift in Sources */,
@@ -504,6 +519,7 @@
 				32912C06283127F200D79A91 /* SplashVC.swift in Sources */,
 				32CE461E28343E3C00B520F3 /* String + Ext.swift in Sources */,
 				32912C2D28317C2300D79A91 /* RoundedShadowView.swift in Sources */,
+				32E33DFF283538B90045981D /* KeychainError.swift in Sources */,
 				32912C18283134BD00D79A91 /* RoundedButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
