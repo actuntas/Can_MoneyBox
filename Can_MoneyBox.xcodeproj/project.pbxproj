@@ -140,6 +140,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		32232CFA28348FB00091418D /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				32912C04283127D700D79A91 /* Splash */,
+				32912C032831276600D79A91 /* Login */,
+				32912C2328316E6A00D79A91 /* Accounts */,
+				32912C312831A93400D79A91 /* AccountDetails */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		32232CFB283490650091418D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				32912C1228312E4800D79A91 /* CustomViews */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		3225F84A28308D4500B10A29 = {
 			isa = PBXGroup;
 			children = (
@@ -164,14 +183,11 @@
 			isa = PBXGroup;
 			children = (
 				3225F88628308DD900B10A29 /* Core */,
-				32912C04283127D700D79A91 /* Splash */,
-				32912C032831276600D79A91 /* Login */,
-				32912C2328316E6A00D79A91 /* Accounts */,
-				32912C312831A93400D79A91 /* AccountDetails */,
+				32232CFA28348FB00091418D /* Screens */,
 				3225F85628308D4500B10A29 /* AppDelegate.swift */,
 				3225F85828308D4500B10A29 /* SceneDelegate.swift */,
-				3225F85F28308D4600B10A29 /* Assets.xcassets */,
 				3225F86128308D4600B10A29 /* LaunchScreen.storyboard */,
+				3225F85F28308D4600B10A29 /* Assets.xcassets */,
 				3225F86428308D4600B10A29 /* Info.plist */,
 			);
 			path = Can_MoneyBox;
@@ -197,12 +213,12 @@
 		3225F88628308DD900B10A29 /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				32CE461C28343E2C00B520F3 /* Extensions */,
-				32912C3C2831D43900D79A91 /* Helpers */,
-				32912C1228312E4800D79A91 /* CustomViews */,
+				32912C022831274A00D79A91 /* Model */,
+				32CE461C28343E2C00B520F3 /* Extension */,
+				32912C3C2831D43900D79A91 /* Helper */,
+				32232CFB283490650091418D /* View */,
 				32912C092831292B00D79A91 /* Utils */,
 				3225F88928308E0800B10A29 /* Data */,
-				32912C022831274A00D79A91 /* Models */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -227,14 +243,14 @@
 			path = Network;
 			sourceTree = "<group>";
 		};
-		32912C022831274A00D79A91 /* Models */ = {
+		32912C022831274A00D79A91 /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				32912C1D283138E900D79A91 /* LoginResponse.swift */,
 				32912C1F28316BEB00D79A91 /* AccountResponse.swift */,
 				32912C3A2831B3E700D79A91 /* IncrementResponse.swift */,
 			);
-			path = Models;
+			path = Model;
 			sourceTree = "<group>";
 		};
 		32912C032831276600D79A91 /* Login */ = {
@@ -300,22 +316,22 @@
 			path = AccountDetails;
 			sourceTree = "<group>";
 		};
-		32912C3C2831D43900D79A91 /* Helpers */ = {
+		32912C3C2831D43900D79A91 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
 				32912C3D2831D44700D79A91 /* ErrorHandler.swift */,
 				32912C3F2831D4EA00D79A91 /* LoadingView.swift */,
 				32912C412831D61500D79A91 /* LoadingHandler.swift */,
 			);
-			path = Helpers;
+			path = Helper;
 			sourceTree = "<group>";
 		};
-		32CE461C28343E2C00B520F3 /* Extensions */ = {
+		32CE461C28343E2C00B520F3 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
 				32CE461D28343E3C00B520F3 /* String + Ext.swift */,
 			);
-			path = Extensions;
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
