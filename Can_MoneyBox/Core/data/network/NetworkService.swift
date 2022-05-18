@@ -53,7 +53,7 @@ class DefaultNetworkService: NetworkService {
             }
             
             guard responseCode != 403 else {
-                return completion(.failure(.invalidCredentials))
+                return completion(.failure(.invalidRequest))
             }
             
             guard 200..<300 ~= responseCode else {

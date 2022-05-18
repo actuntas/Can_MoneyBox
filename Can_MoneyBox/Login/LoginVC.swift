@@ -58,9 +58,7 @@ class LoginVC: UIViewController, ActionHandlers {
     }
     
     private func changeButtonState(shouldEnable: Bool) {
-        DispatchQueue.main.async {
             self.loginButton.isEnabled = shouldEnable
-        }
        
     }
     

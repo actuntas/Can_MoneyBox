@@ -33,6 +33,7 @@ final class AccountDetailsViewModel {
     
     func incrementAmountByTen(amount: String) {
         self.amount = amount
+        
         switch status {
             
         case .authorized:
@@ -107,6 +108,6 @@ final class AccountDetailsViewModel {
 
 extension AccountDetailsViewModel {
     var productId: String {
-        String(datasource.product.product.id)
+        String(datasource.product.id)
     }
 }
