@@ -23,6 +23,7 @@ class AccountsVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        viewModel.sendTitle()
         viewModel.getAccounts()
     }
     
@@ -83,6 +84,10 @@ extension AccountsVC: AccountsViewModelOutput, ActionHandlers {
         DispatchQueue.main.async {
             self.tableView.reloadData()
         }
+    }
+    
+    func displayTitle(title: String) {
+        self.title = title
     }
     
     

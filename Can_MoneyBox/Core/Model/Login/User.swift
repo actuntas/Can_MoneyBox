@@ -1,73 +1,12 @@
 //
-//  LoginResponse.swift
+//  User.swift
 //  Can_MoneyBox
 //
-//  Created by CAN TUNTAS on 15.05.2022.
+//  Created by CAN TUNTAS on 19.05.2022.
 //
 
 import Foundation
 
-struct Auth: Codable {
-    let token: String
-    let email: String
-    let password: String
-}
-
-struct LoginResponse: Decodable {
-    
-    let user: User
-    let session: Session
-    let actionMessage: ActionMessage
-    let informationMessage: String
-
-    enum CodingKeys: String, CodingKey {
-        case user = "User"
-        case session = "Session"
-        case actionMessage = "ActionMessage"
-        case informationMessage = "InformationMessage"
-    }
-}
-
-// MARK: - ActionMessage
-struct ActionMessage: Codable {
-    let type, message: String
-    let actions: [Action]
-
-    enum CodingKeys: String, CodingKey {
-        case type = "Type"
-        case message = "Message"
-        case actions = "Actions"
-    }
-}
-
-// MARK: - Action
-struct Action: Codable {
-    let label: String
-    let amount: Int
-    let type, animation: String
-
-    enum CodingKeys: String, CodingKey {
-        case label = "Label"
-        case amount = "Amount"
-        case type = "Type"
-        case animation = "Animation"
-    }
-}
-
-// MARK: - Session
-struct Session: Codable {
-    let bearerToken, externalSessionID, sessionExternalID: String
-    let expiryInSeconds: Int
-
-    enum CodingKeys: String, CodingKey {
-        case bearerToken = "BearerToken"
-        case externalSessionID = "ExternalSessionId"
-        case sessionExternalID = "SessionExternalId"
-        case expiryInSeconds = "ExpiryInSeconds"
-    }
-}
-
-// MARK: - User
 struct User: Codable {
     let userID: String
     let hasVerifiedEmail, isPinSet: Bool
@@ -86,7 +25,7 @@ struct User: Codable {
     let monthlyBoostAmount, monthlyBoostDay: Int
     let restrictedDevice, emailTwoFactorEnabled: Bool
     let cohort: Int
-
+    
     enum CodingKeys: String, CodingKey {
         case userID = "UserId"
         case hasVerifiedEmail = "HasVerifiedEmail"

@@ -9,6 +9,7 @@ import Foundation
 
 protocol AccountsViewModelOutput: AnyObject {
     func reloadData()
+    func displayTitle(title: String)
     func showAlert(title: String, message: String, buttonTitle: String)
 }
 
@@ -64,6 +65,12 @@ extension AccountsViewModel {
         return "Total Plan Value: £\(datasource.totalValue ?? 0)"
     }
     
+}
+
+extension AccountsViewModel {
+    func sendTitle() {
+        output?.displayTitle(title: datasource.name)
+    }
 }
 
 extension AccountsViewModel {

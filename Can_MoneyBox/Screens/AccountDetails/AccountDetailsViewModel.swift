@@ -8,7 +8,8 @@
 import Foundation
 
 protocol AccountDetailsViewModelProtocol: AnyObject {
-    func displayDatasource(_ amount: String)
+    func updateAmount(_ amount: String)
+    func displayDatasource(datasource: AccountDetailsViewModelDatasource)
     func showAlert(title: String, message: String, buttonTitle: String)
 }
 
@@ -32,6 +33,7 @@ final class AccountDetailsViewModel {
         self.datasource = AccountDetailsViewModelDatasource(product: product, email: email)
     }
     
+    var request = IncrementRequest()
     weak var output: AccountDetailsViewModelProtocol?
     
     func incrementAmountByTen(amount: String) {
@@ -43,7 +45,6 @@ final class AccountDetailsViewModel {
             
             getToken()
             
-            var request = IncrementRequest()
             request.headers.updateValue("Bearer \(authData.token)", forKey: "Authorization")
             request.httpBody = ["Amount":amount, "InvestorProductId":datasource.product.id]
             
@@ -53,7 +54,7 @@ final class AccountDetailsViewModel {
                 case .success(let amountData):
                     let newAmount = String(amountData.moneybox)
                     DispatchQueue.main.async {
-                        self?.output?.displayDatasource(newAmount)
+                        self?.output?.updateAmount(newAmount)
                     }
                     
                 case .failure(let error):
@@ -70,9 +71,8 @@ final class AccountDetailsViewModel {
             }
             
         case .authorizing:
-            // self.status = .authorized
+            self.status = .authorized
             self.incrementAmountByTen(amount: self.amount)
-            
         }
         
     }
@@ -83,20 +83,24 @@ final class AccountDetailsViewModel {
     }
     
     private func refreshToken() {
-        var request = LoginRequest()
+        var loginRequest = LoginRequest()
         status = .authorizing
-        request.httpBody = ["Email":authData.email, "Password":authData.password, "Idfa":"idfa"]
+        loginRequest.httpBody = ["Email":authData.email, "Password":authData.password, "Idfa":"idfa"]
         
-        service.perform(request) { [weak self] result in
+        service.perform(loginRequest) { [weak self] result in
+            
+            guard let self = self else { return }
+            
             switch result {
                 
             case .success(let user):
                 let token = user.session.bearerToken
-                self?.cacheToken(token: token)
                 
-                guard let self = self else { return }
-                self.status = .authorized
-                DispatchQueue.global(qos: .userInitiated).asyncAfter(deadline: .now() + 1) {
+                
+                
+                //self.status = .authorized sil
+                DispatchQueue.global(qos: .userInitiated).sync {
+                    self.cacheToken(token: token)
                     self.incrementAmountByTen(amount: self.amount)
                 }
                 
@@ -107,16 +111,25 @@ final class AccountDetailsViewModel {
     }
     
 }
+   
 
 private func cacheToken(token: String) {
-    let refreshedData = Auth(token: token, email: authData.email, password: authData.password)
-    keychain.save(refreshedData, service: "moneybox", account: refreshedData.email)
+    self.authData = Auth(token: token, email: authData.email, password: authData.password)
+    keychain.save(authData, service: "moneybox", account: authData.email)
     status = .authorized
 }
+    
+
 
 private enum AuthorizationStatus {
     case authorized
     case authorizing
 }
 
+}
+
+extension AccountDetailsViewModel {
+    func sendDatasource() {
+        output?.displayDatasource(datasource: datasource)
+    }
 }
