@@ -17,6 +17,7 @@ struct AccountsViewModelDatasource {
     var products = [ProductResponse]()
     var name: String
     var securedData: Auth
+    var totalValue: Double?
 }
 
 final class AccountsViewModel {
@@ -40,6 +41,7 @@ final class AccountsViewModel {
             switch result {
             case .success(let accountData):
                 print(accountData)
+                self?.datasource.totalValue = accountData.totalPlanValue
                 self?.datasource.products = accountData.productResponses
                 self?.output?.reloadData()
             case .failure(let error):
@@ -58,9 +60,18 @@ extension AccountsViewModel {
     }
     
     var titleForHeaderInSection: String {
-        "Welcome, \(String(describing: datasource.name))"
+        
+        return "Total Plan Value: £\(datasource.totalValue ?? 0)"
     }
     
 }
+
+extension AccountsViewModel {
+    func removeInfo() {
+        KeychainManager.standard.delete(service: KeychainKey.Company, account: datasource.securedData.email)
+    }
+    
+}
+
 
 

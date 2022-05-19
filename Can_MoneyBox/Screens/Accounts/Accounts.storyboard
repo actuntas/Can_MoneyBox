@@ -18,21 +18,21 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="wci-Gm-JgN">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <rect key="frame" x="0.0" y="98" width="414" height="764"/>
+                                <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AccountCell" rowHeight="177" id="mjO-OT-Wff" customClass="AccountsCell" customModule="Can_MoneyBox" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AccountCell" rowHeight="177" id="mjO-OT-Wff" customClass="AccountsCell" customModule="Can_MoneyBox" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="44.5" width="414" height="177"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="mjO-OT-Wff" id="oPz-KM-7po">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="177"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="385.5" height="177"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SIX-fq-yau" customClass="RoundedShadowView" customModule="Can_MoneyBox" customModuleProvider="target">
-                                                    <rect key="frame" x="36" y="17" width="342" height="143"/>
+                                                    <rect key="frame" x="20" y="17" width="341.5" height="143"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j6b-CJ-FJi">
-                                                            <rect key="frame" x="12" y="8" width="318" height="24"/>
+                                                            <rect key="frame" x="12" y="8" width="317.5" height="24"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="24" id="e27-Q1-KOj"/>
                                                             </constraints>
@@ -41,16 +41,26 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logoMoneyBox" translatesAutoresizingMaskIntoConstraints="NO" id="bCa-FL-S1X">
-                                                            <rect key="frame" x="180" y="76" width="150" height="55"/>
+                                                            <rect key="frame" x="179.5" y="76" width="150" height="55"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="150" id="Hgn-5F-blZ"/>
                                                                 <constraint firstAttribute="height" constant="55" id="KYS-if-3PH"/>
                                                             </constraints>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oR0-SY-U71">
-                                                            <rect key="frame" x="12" y="44" width="318" height="17"/>
+                                                            <rect key="frame" x="12" y="44" width="317.5" height="17"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="17" id="R9J-yb-2DE"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FxP-PD-r1w">
+                                                            <rect key="frame" x="12" y="73" width="317.5" height="17"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="17" id="OfN-Ac-hih"/>
+                                                                <constraint firstAttribute="height" constant="17" id="kat-uH-YX3"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                                             <nil key="textColor"/>
@@ -59,18 +69,21 @@
                                                     </subviews>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     <constraints>
+                                                        <constraint firstItem="FxP-PD-r1w" firstAttribute="leading" secondItem="oR0-SY-U71" secondAttribute="leading" id="3jo-b0-Zdp"/>
                                                         <constraint firstAttribute="bottom" secondItem="bCa-FL-S1X" secondAttribute="bottom" constant="12" id="6dl-s1-yjH"/>
+                                                        <constraint firstItem="FxP-PD-r1w" firstAttribute="trailing" secondItem="oR0-SY-U71" secondAttribute="trailing" id="EbZ-tC-o4A"/>
                                                         <constraint firstAttribute="trailing" secondItem="bCa-FL-S1X" secondAttribute="trailing" constant="12" id="Fj3-D3-FMs"/>
                                                         <constraint firstItem="j6b-CJ-FJi" firstAttribute="leading" secondItem="SIX-fq-yau" secondAttribute="leading" constant="12" id="Ged-qK-UKG"/>
                                                         <constraint firstItem="oR0-SY-U71" firstAttribute="top" secondItem="j6b-CJ-FJi" secondAttribute="bottom" constant="12" id="K9k-Ca-kmn"/>
                                                         <constraint firstItem="oR0-SY-U71" firstAttribute="trailing" secondItem="j6b-CJ-FJi" secondAttribute="trailing" id="Lty-Tt-q8A"/>
                                                         <constraint firstAttribute="trailing" secondItem="j6b-CJ-FJi" secondAttribute="trailing" constant="12" id="Mqv-l2-i4Q"/>
                                                         <constraint firstItem="j6b-CJ-FJi" firstAttribute="top" secondItem="SIX-fq-yau" secondAttribute="top" constant="8" id="PtJ-5P-ZJN"/>
+                                                        <constraint firstItem="FxP-PD-r1w" firstAttribute="top" secondItem="oR0-SY-U71" secondAttribute="bottom" constant="12" id="bbk-SD-fWn"/>
                                                         <constraint firstItem="oR0-SY-U71" firstAttribute="leading" secondItem="j6b-CJ-FJi" secondAttribute="leading" id="lT0-4e-bGj"/>
                                                     </constraints>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="color" keyPath="bgColor">
-                                                            <color key="value" systemColor="systemRedColor"/>
+                                                            <color key="value" systemColor="systemPinkColor"/>
                                                         </userDefinedRuntimeAttribute>
                                                         <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
                                                             <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -96,13 +109,16 @@
                                             <constraints>
                                                 <constraint firstAttribute="trailingMargin" secondItem="SIX-fq-yau" secondAttribute="trailing" constant="16" id="06f-fb-abZ"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="SIX-fq-yau" secondAttribute="bottom" constant="6" id="PWw-f1-iIC"/>
-                                                <constraint firstItem="SIX-fq-yau" firstAttribute="leading" secondItem="oPz-KM-7po" secondAttribute="leadingMargin" constant="16" id="TX6-cl-mGA"/>
+                                                <constraint firstItem="SIX-fq-yau" firstAttribute="leading" secondItem="oPz-KM-7po" secondAttribute="leadingMargin" id="TX6-cl-mGA"/>
                                                 <constraint firstItem="SIX-fq-yau" firstAttribute="top" secondItem="oPz-KM-7po" secondAttribute="topMargin" constant="6" id="bRb-T2-FRg"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
                                         <connections>
                                             <outlet property="accountNameLabel" destination="j6b-CJ-FJi" id="rj9-i0-fll"/>
                                             <outlet property="cardView" destination="SIX-fq-yau" id="Er9-2f-raf"/>
+                                            <outlet property="messageLabel" destination="oR0-SY-U71" id="p36-a3-dEg"/>
+                                            <outlet property="moneyBoxLabel" destination="FxP-PD-r1w" id="6H3-8b-yEw"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -113,12 +129,15 @@
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="wci-Gm-JgN" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="0h8-Xt-gUF"/>
                             <constraint firstItem="wci-Gm-JgN" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="2n8-Ll-sNi"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="wci-Gm-JgN" secondAttribute="bottom" id="6S6-Q5-TC4"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="wci-Gm-JgN" secondAttribute="trailing" id="9ZA-sq-VbK"/>
+                            <constraint firstItem="oR0-SY-U71" firstAttribute="trailing" secondItem="j6b-CJ-FJi" secondAttribute="trailing" id="BBx-nw-W8b"/>
+                            <constraint firstItem="oR0-SY-U71" firstAttribute="leading" secondItem="j6b-CJ-FJi" secondAttribute="leading" id="nOJ-uS-ntN"/>
+                            <constraint firstItem="oR0-SY-U71" firstAttribute="top" secondItem="j6b-CJ-FJi" secondAttribute="bottom" constant="12" id="tlm-lD-oI3"/>
+                            <constraint firstItem="wci-Gm-JgN" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="10" id="yDG-wI-V5j"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Accounts" id="TwN-ry-6zM">
@@ -146,7 +165,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="KwE-6y-RgZ">
                         <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="tintColor" systemColor="systemPurpleColor"/>
+                        <color key="tintColor" systemColor="systemPinkColor"/>
                         <navigationBarAppearance key="compactAppearance"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -161,11 +180,14 @@
     </scenes>
     <resources>
         <image name="logoMoneyBox" width="300" height="70"/>
+        <systemColor name="secondarySystemBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
-        <systemColor name="systemPurpleColor">
-            <color red="0.68627450980392157" green="0.32156862745098042" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <systemColor name="systemPinkColor">
+            <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemRedColor">
             <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

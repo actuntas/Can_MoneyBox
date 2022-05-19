@@ -22,8 +22,7 @@ enum Storyboards {
     static let AccountDetails = "AccountDetails"
 }
 
-enum UserDefaultKeys {
-    static let Token = "Token"
-    static let TokenExpireDate = "TokenExpireDate"
+enum KeychainKey {
+    static let Company = "moneybox.com"
 }
 

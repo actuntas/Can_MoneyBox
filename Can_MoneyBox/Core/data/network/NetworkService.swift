@@ -51,7 +51,6 @@ class DefaultNetworkService: NetworkService {
             }
             
             do {
-                print(String(data: data, encoding: .utf8)!)
                 try completion(.success(request.decode(data)))
             } catch {
                 print(error)

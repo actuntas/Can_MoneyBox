@@ -13,7 +13,10 @@ class AccountDetailsVC: UIViewController, ActionHandlers {
     
     @IBOutlet weak var detailCardView: RoundedShadowView!
     @IBOutlet weak var productNameLabel: UILabel!
-    @IBOutlet weak var amountLabel: UILabel!
+    @IBOutlet weak var totalEarningsPercentageLabel: UILabel!
+    @IBOutlet weak var annualLimitLabel: UILabel!
+    @IBOutlet weak var moneyBoxLabel: UILabel!
+    @IBOutlet weak var cDayMessageLabel: UILabel!
     
     var viewModel: AccountDetailsViewModel!
     
@@ -45,7 +48,7 @@ class AccountDetailsVC: UIViewController, ActionHandlers {
     
     private func updateAmount(newAmount: String?) {
         guard let amount = newAmount else { return }
-        amountLabel.text = amount
+        totalEarningsPercentageLabel.text = amount
         //self.removeLoading()
     }
     

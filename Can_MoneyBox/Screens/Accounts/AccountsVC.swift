@@ -13,12 +13,16 @@ class AccountsVC: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var logoutButton: UIBarButtonItem!
-    
+
     var viewModel: AccountsViewModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configure()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         viewModel.getAccounts()
     }
     
@@ -28,9 +32,9 @@ class AccountsVC: UIViewController {
     
     @IBAction func logoutPressed(_ sender: Any) {
         showLoading()
+        viewModel.removeInfo()
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.7) {
             self.logoutButton.isEnabled = false
-            UserDefaults.standard.removeObject(forKey: UserDefaultKeys.Token)
             self.dismiss(animated: true)
         }
     }
@@ -40,7 +44,7 @@ class AccountsVC: UIViewController {
 extension AccountsVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        viewModel.titleForHeaderInSection
+        viewModel.titleForHeaderInSection ?? ""
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -74,7 +78,7 @@ extension AccountsVC: UITableViewDelegate, UITableViewDataSource {
 }
 
 extension AccountsVC: AccountsViewModelOutput, ActionHandlers {
-  
+    
     func reloadData() {
         DispatchQueue.main.async {
             self.tableView.reloadData()

@@ -57,7 +57,6 @@ final class LoginViewModel {
 extension LoginViewModel {
     private func cacheAuth(authData: Auth) {
            self.keychain.save(authData, service: "moneybox.com", account: authData.email)
-            print("cached securely")
     }
 }
 

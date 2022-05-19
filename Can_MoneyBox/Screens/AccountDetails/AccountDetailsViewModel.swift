@@ -8,7 +8,7 @@
 import Foundation
 
 protocol AccountDetailsViewModelProtocol: AnyObject {
-    func updateValue(_ amount: String)
+    func displayDatasource(_ amount: String)
     func showAlert(title: String, message: String, buttonTitle: String)
 }
 
@@ -53,19 +53,13 @@ final class AccountDetailsViewModel {
                 case .success(let amountData):
                     let newAmount = String(amountData.moneybox)
                     DispatchQueue.main.async {
-                        self?.output?.updateValue(newAmount)
+                        self?.output?.displayDatasource(newAmount)
                     }
                     
                 case .failure(let error):
                     if error == .invalidCredentials {
-                        guard let email = self?.authData.email,
-                              let password = self?.authData.password else {
-                            DispatchQueue.main.async {
-                                self?.output?.showAlert(title: "Error", message: error.localizedDescription, buttonTitle: "Ok")
-                            }
-                            return
-                        }
-                        self?.refreshToken(email: email, password: password)
+                   
+                        self?.refreshToken()
                     } else {
                         DispatchQueue.main.async {
                             self?.output?.showAlert(title: "Error", message: error.localizedDescription, buttonTitle: "Ok")
@@ -76,7 +70,7 @@ final class AccountDetailsViewModel {
             }
             
         case .authorizing:
-            self.status = .authorized
+            // self.status = .authorized
             self.incrementAmountByTen(amount: self.amount)
             
         }
@@ -88,38 +82,41 @@ final class AccountDetailsViewModel {
         self.authData = securedData
     }
     
-    private func refreshToken(email: String, password: String) {
+    private func refreshToken() {
         var request = LoginRequest()
         status = .authorizing
-        request.httpBody = ["Email":email, "Password":password, "Idfa":"idfa"]
+        request.httpBody = ["Email":authData.email, "Password":authData.password, "Idfa":"idfa"]
         
         service.perform(request) { [weak self] result in
             switch result {
                 
             case .success(let user):
                 let token = user.session.bearerToken
-                self?.cacheToken(token: token, email: email, password: password)
-                DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-                    guard let self = self else { return }
-                    self.status = .authorized
+                self?.cacheToken(token: token)
+                
+                guard let self = self else { return }
+                self.status = .authorized
+                DispatchQueue.global(qos: .userInitiated).asyncAfter(deadline: .now() + 1) {
                     self.incrementAmountByTen(amount: self.amount)
                 }
                 
-            case .failure(let error):
-                print(error.localizedDescription)
-            }
+            
+        case .failure(let error):
+            print(error.localizedDescription)
         }
-        
     }
     
-    private func cacheToken(token: String, email: String, password: String) {
-        let refreshedData = Auth(token: token, email: email, password: password)
-        keychain.save(refreshedData, service: "moneybox", account: email)
-    }
-    
-    private enum AuthorizationStatus {
-        case authorized
-        case authorizing
-    }
-    
+}
+
+private func cacheToken(token: String) {
+    let refreshedData = Auth(token: token, email: authData.email, password: authData.password)
+    keychain.save(refreshedData, service: "moneybox", account: refreshedData.email)
+    status = .authorized
+}
+
+private enum AuthorizationStatus {
+    case authorized
+    case authorizing
+}
+
 }

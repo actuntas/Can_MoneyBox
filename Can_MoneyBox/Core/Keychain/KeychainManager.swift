@@ -23,11 +23,10 @@ final class KeychainManager {
             kSecClass: kSecClassGenericPassword
         ] as CFDictionary
         
-        // Add data in query to keychain
         let status = SecItemAdd(query, nil)
         
         if status == errSecDuplicateItem {
-            // Item already exist, thus update it.
+        
             let query = [
                 kSecAttrService: service,
                 kSecAttrAccount: account,
@@ -36,7 +35,6 @@ final class KeychainManager {
             
             let attributesToUpdate = [kSecValueData: data] as CFDictionary
             
-            // Update existing item
             SecItemUpdate(query, attributesToUpdate)
         }
     }
@@ -64,7 +62,6 @@ final class KeychainManager {
             kSecClass: kSecClassGenericPassword,
         ] as CFDictionary
         
-        // Delete item from keychain
         SecItemDelete(query)
     }
 }
@@ -74,7 +71,6 @@ extension KeychainManager {
     func save<T>(_ item: T, service: String, account: String) where T : Codable {
         
         do {
-            // Encode as JSON data and save in keychain
             let data = try JSONEncoder().encode(item)
             save(data, service: service, account: account)
             
@@ -85,12 +81,10 @@ extension KeychainManager {
     
     func read<T>(service: String, account: String, type: T.Type) -> T? where T : Codable {
         
-        // Read item data from keychain
         guard let data = read(service: service, account: account) else {
             return nil
         }
         
-        // Decode JSON data to object
         do {
             let item = try JSONDecoder().decode(type, from: data)
             return item

@@ -19,21 +19,126 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b5z-M7-z6y" customClass="RoundedShadowView" customModule="Can_MoneyBox" customModuleProvider="target">
                                 <rect key="frame" x="30" y="84" width="354" height="220"/>
-                                <color key="backgroundColor" systemColor="systemYellowColor"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5uY-Lu-cli">
+                                        <rect key="frame" x="8" y="20" width="338" height="37"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="37" id="1s4-es-0Ue"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3kr-Gf-lp8">
+                                        <rect key="frame" x="8" y="69" width="338" height="17"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RPT-ul-Rao">
+                                        <rect key="frame" x="8" y="98" width="338" height="17"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PZ5-kl-2Hh">
+                                        <rect key="frame" x="8" y="127" width="338" height="17"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemIndigoColor"/>
                                 <constraints>
+                                    <constraint firstItem="5uY-Lu-cli" firstAttribute="leading" secondItem="b5z-M7-z6y" secondAttribute="leading" constant="8" id="0W3-ZF-ult"/>
+                                    <constraint firstItem="5uY-Lu-cli" firstAttribute="top" secondItem="b5z-M7-z6y" secondAttribute="top" constant="20" id="3nn-fN-aPG"/>
+                                    <constraint firstItem="3kr-Gf-lp8" firstAttribute="top" secondItem="5uY-Lu-cli" secondAttribute="bottom" constant="12" id="7ak-1U-UHy"/>
+                                    <constraint firstAttribute="trailing" secondItem="5uY-Lu-cli" secondAttribute="trailing" constant="8" id="9uM-RL-4rw"/>
+                                    <constraint firstItem="RPT-ul-Rao" firstAttribute="trailing" secondItem="3kr-Gf-lp8" secondAttribute="trailing" id="Avf-XU-OC6"/>
                                     <constraint firstAttribute="height" constant="220" id="O7L-36-asx"/>
+                                    <constraint firstItem="RPT-ul-Rao" firstAttribute="leading" secondItem="3kr-Gf-lp8" secondAttribute="leading" id="Qb4-T6-Pdv"/>
+                                    <constraint firstItem="3kr-Gf-lp8" firstAttribute="trailing" secondItem="5uY-Lu-cli" secondAttribute="trailing" id="beJ-d5-IEO"/>
+                                    <constraint firstItem="RPT-ul-Rao" firstAttribute="top" secondItem="3kr-Gf-lp8" secondAttribute="bottom" constant="12" id="fpy-jA-ggT"/>
+                                    <constraint firstItem="RPT-ul-Rao" firstAttribute="height" secondItem="3kr-Gf-lp8" secondAttribute="height" id="mal-0T-xFr"/>
+                                    <constraint firstItem="3kr-Gf-lp8" firstAttribute="leading" secondItem="5uY-Lu-cli" secondAttribute="leading" id="mcC-9W-FVa"/>
+                                    <constraint firstItem="PZ5-kl-2Hh" firstAttribute="trailing" secondItem="RPT-ul-Rao" secondAttribute="trailing" id="slx-uN-2vg"/>
+                                    <constraint firstItem="PZ5-kl-2Hh" firstAttribute="leading" secondItem="RPT-ul-Rao" secondAttribute="leading" id="tRt-qb-gx0"/>
+                                    <constraint firstItem="PZ5-kl-2Hh" firstAttribute="top" secondItem="RPT-ul-Rao" secondAttribute="bottom" constant="12" id="tiU-j3-bRK"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="bgColor">
+                                        <color key="value" systemColor="systemIndigoColor"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                        <real key="value" value="0.40000000000000002"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                        <real key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                        <size key="value" width="1" height="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J3N-Mk-DhK" customClass="RoundedShadowView" customModule="Can_MoneyBox" customModuleProvider="target">
                                 <rect key="frame" x="30" y="334" width="354" height="120"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Collection day message:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rdb-yR-evg">
+                                        <rect key="frame" x="8" y="12" width="338" height="30"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Collection day message:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.69999999999999996" translatesAutoresizingMaskIntoConstraints="NO" id="RDC-ag-yxC">
+                                        <rect key="frame" x="8" y="54" width="338" height="17"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
                                 <color key="backgroundColor" systemColor="systemTealColor"/>
                                 <constraints>
+                                    <constraint firstItem="Rdb-yR-evg" firstAttribute="leading" secondItem="J3N-Mk-DhK" secondAttribute="leading" constant="8" id="9A5-4u-mEG"/>
+                                    <constraint firstAttribute="trailing" secondItem="Rdb-yR-evg" secondAttribute="trailing" constant="8" id="Edp-Tz-UQR"/>
+                                    <constraint firstItem="RDC-ag-yxC" firstAttribute="leading" secondItem="Rdb-yR-evg" secondAttribute="leading" id="G77-m0-BoD"/>
+                                    <constraint firstItem="Rdb-yR-evg" firstAttribute="top" secondItem="J3N-Mk-DhK" secondAttribute="top" constant="12" id="OLp-H2-cQe"/>
+                                    <constraint firstItem="RDC-ag-yxC" firstAttribute="top" secondItem="Rdb-yR-evg" secondAttribute="bottom" constant="12" id="ZgG-YP-GID"/>
                                     <constraint firstAttribute="height" constant="120" id="oRi-de-Xrn"/>
+                                    <constraint firstItem="RDC-ag-yxC" firstAttribute="trailing" secondItem="Rdb-yR-evg" secondAttribute="trailing" id="sq2-Vb-e5i"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                        <real key="value" value="0.40000000000000002"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                        <real key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                        <size key="value" width="1" height="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="J3N-Mk-DhK" firstAttribute="top" secondItem="b5z-M7-z6y" secondAttribute="bottom" constant="30" id="80c-j1-zoY"/>
                             <constraint firstItem="J3N-Mk-DhK" firstAttribute="trailing" secondItem="b5z-M7-z6y" secondAttribute="trailing" id="O7C-CH-j2P"/>
@@ -44,23 +149,28 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="annualLimitLabel" destination="3kr-Gf-lp8" id="i29-nq-hqA"/>
+                        <outlet property="cDayMessageLabel" destination="RDC-ag-yxC" id="muj-fL-K73"/>
                         <outlet property="detailCardView" destination="J3N-Mk-DhK" id="NVS-LB-6U8"/>
+                        <outlet property="moneyBoxLabel" destination="PZ5-kl-2Hh" id="ZDW-Ex-trn"/>
+                        <outlet property="productNameLabel" destination="5uY-Lu-cli" id="J5r-x6-SJA"/>
+                        <outlet property="totalEarningsPercentageLabel" destination="RPT-ul-Rao" id="vp4-gu-8Hg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="139" y="129"/>
+            <point key="canvasLocation" x="-390" y="72"/>
         </scene>
     </scenes>
     <resources>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        <systemColor name="secondarySystemBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemIndigoColor">
+            <color red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemTealColor">
             <color red="0.18823529411764706" green="0.69019607843137254" blue="0.7803921568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemYellowColor">
-            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
