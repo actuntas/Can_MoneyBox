@@ -8,6 +8,7 @@
 import Foundation
 
 enum Identifiers {
+    static let SplashVC = "SplashVC"
     static let LoginVC = "LoginVC"
     static let AccountsNC = "AccountsRoot"
     static let AccountsVC = "AccountsVC"
@@ -24,5 +25,10 @@ enum Storyboards {
 
 enum KeychainKey {
     static let Company = "moneybox.com"
+}
+
+enum UserDefaultsKeys {
+    static let Name = "nameInfo"
+    static let Email = "emailInfo"
 }
 

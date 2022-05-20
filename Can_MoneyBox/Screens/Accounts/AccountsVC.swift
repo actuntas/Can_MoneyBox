@@ -48,9 +48,13 @@ class AccountsVC: UIViewController {
     
     @IBAction func logoutPressed(_ sender: Any) {
         showLoading()
-        viewModel.removeInfo()
+        viewModel.removeCache()
         self.logoutButton.isEnabled = false
+        
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.7) {
+            let storyboard = UIStoryboard(name: Storyboards.Splash, bundle: nil)
+            guard let splashVC = storyboard.instantiateViewController(withIdentifier: Identifiers.SplashVC) as? SplashVC else { return }
+            splashVC.status = .loggedOut
             self.dismiss(animated: true)
         }
     }

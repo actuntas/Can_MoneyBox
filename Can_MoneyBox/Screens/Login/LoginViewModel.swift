@@ -40,6 +40,7 @@ final class LoginViewModel {
             case .success(let user):
                 let token = user.session.bearerToken
                 self?.cacheAuth(authData: Auth(token: token, email: email, password: password))
+                self?.cacheInfo(name: user.user.firstName, email: user.user.email)
                 let datasource = LoginViewModelDatasource(name: user.user.firstName, secureData: Auth(token: token, email: email, password: password))
                 self?.output?.loginCompleted(datasource: datasource)
             case .failure(let error):
@@ -82,5 +83,12 @@ extension LoginViewModel {
         }
     }
     
+}
+
+extension LoginViewModel {
+    func cacheInfo(name: String, email: String) {
+        UserDefaults.standard.set(name, forKey: UserDefaultsKeys.Name)
+        UserDefaults.standard.set(email, forKey: UserDefaultsKeys.Email)
+    }
 }
 

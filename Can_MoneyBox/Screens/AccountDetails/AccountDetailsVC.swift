@@ -57,12 +57,9 @@ class AccountDetailsVC: UIViewController, ActionHandlers {
     private func updateAmount(newAmount: String?) {
         guard let amount = newAmount else { return }
         typeLabel.text = amount
-        //self.removeLoading()
     }
     
     @objc private func incrementAmountByTen() {
-        print("pressed")
-        //self.showLoading()
         viewModel.incrementAmountByTen(amount: "10")
     }
 }

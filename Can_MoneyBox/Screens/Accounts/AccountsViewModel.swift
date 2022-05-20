@@ -119,8 +119,10 @@ extension AccountsViewModel {
 }
 
 extension AccountsViewModel {
-    func removeInfo() {
+    func removeCache() {
         KeychainManager.standard.delete(service: KeychainKey.Company, account: datasource.securedData.email)
+        UserDefaults.standard.removeObject(forKey: UserDefaultsKeys.Name)
+        UserDefaults.standard.removeObject(forKey: UserDefaultsKeys.Email)
     }
 }
 
