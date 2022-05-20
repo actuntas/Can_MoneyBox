@@ -22,7 +22,6 @@ struct LoginViewModelDatasource {
 final class LoginViewModel {
     
     let service: NetworkService
-    var datasource: LoginViewModelDatasource!
     let keychain = KeychainManager.standard
     var request = LoginRequest()
     weak var output: LoginViewModelOutput?
@@ -42,7 +41,6 @@ final class LoginViewModel {
                 let token = user.session.bearerToken
                 self?.cacheAuth(authData: Auth(token: token, email: email, password: password))
                 let datasource = LoginViewModelDatasource(name: user.user.firstName, secureData: Auth(token: token, email: email, password: password))
-                self?.datasource = datasource
                 self?.output?.loginCompleted(datasource: datasource)
             case .failure(let error):
                 DispatchQueue.main.async {
@@ -58,7 +56,6 @@ final class LoginViewModel {
 extension LoginViewModel {
     private func cacheAuth(authData: Auth) {
            self.keychain.save(authData, service: "moneybox.com", account: authData.email)
-        UserDefaults.standard.set(datasource.name, forKey: "name") //for autologin
     }
 }
 
