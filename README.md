@@ -16,11 +16,9 @@ Only `IQKeyboardManagerSwift` is used in the project as a 3rd party dependency t
 
 * It was really a long week. Thank you for your patience.
 
-* I have very similar two ViewModels (accounts and accountdetails viewmodels) If I have more time that's the downside I need to recover.
+* I have very similar two ViewModels If I had more time that would be the thing I want to improve.
 
-* I am aware of Keychain read never used inside the project and I haven't handled error scenarios on KeychainManager that's another downside that I need to fix.
-
-* Regardless of this project succeeds or not feedbacks are always welcome <3
+* Regardless of this project succeeds or not feedbacks are always welcome. <3
 
 ## Sources
 
