@@ -84,7 +84,6 @@ extension AccountsViewModel {
         
         loginRequest.httpBody = ["Email":datasource.securedData.email, "Password":datasource.securedData.password, "Idfa":"idfa"]
         
-        func login(email: String, password: String) {
             service.perform(loginRequest) { [weak self] result in
                 
                 guard let self = self else { return }
@@ -99,8 +98,6 @@ extension AccountsViewModel {
                     completion(false)
                 }
             }
-        }
-        
     }
 }
 

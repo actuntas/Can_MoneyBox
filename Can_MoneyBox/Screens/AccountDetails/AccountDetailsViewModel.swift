@@ -98,7 +98,7 @@ extension AccountDetailsViewModel {
                     
                 case .success(let newTokenData):
                     self.datasource.securedData.token = newTokenData.session.bearerToken
-                    self.keychain.save(self.datasource.securedData, service: KeychainKey.Company, account: self.datasource.securedData.email) //re-cache
+                    self.keychain.save(self.datasource.securedData, service: KeychainKey.Company, account: self.datasource.securedData.email) 
                     completion(true)
                 case .failure(_):
                     completion(false)
