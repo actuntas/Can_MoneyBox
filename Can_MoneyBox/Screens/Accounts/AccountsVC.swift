@@ -11,10 +11,14 @@ private typealias ActionHandlers = LoadingHandler & ErrorHandler
 
 class AccountsVC: UIViewController {
     
+    //MARK: - IBOutlets and Variables
+    
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var logoutButton: UIBarButtonItem!
 
     var viewModel: AccountsViewModel!
+    
+    //MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,29 +27,41 @@ class AccountsVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        viewModel.sendTitle()
+        viewModel.updateTitle()
         viewModel.getAccounts()
     }
+    
+    //MARK: - Helper Functions
     
     private func configure() {
         viewModel.output = self
     }
     
+    private func navigate(_ selectedProduct: ProductResponse) {
+        
+        let detailsViewModel = AccountDetailsViewModel(service: DefaultNetworkService(), product: selectedProduct, authData: self.viewModel.datasource.securedData)
+        let storyboard = UIStoryboard(name: Storyboards.AccountDetails, bundle: nil)
+        guard let detailsVC = storyboard.instantiateViewController(withIdentifier: Identifiers.AccountDetailsVC) as? AccountDetailsVC else { return }
+        detailsVC.viewModel = detailsViewModel
+        self.show(detailsVC, sender: nil)
+    }
+    
     @IBAction func logoutPressed(_ sender: Any) {
         showLoading()
         viewModel.removeInfo()
+        self.logoutButton.isEnabled = false
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.7) {
-            self.logoutButton.isEnabled = false
             self.dismiss(animated: true)
         }
     }
     
 }
 
+//MARK: - TableView Delegate Methods
 extension AccountsVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        viewModel.titleForHeaderInSection ?? ""
+        viewModel.titleForHeaderInSection
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -65,18 +81,16 @@ extension AccountsVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+        tableView.deselectRow(at: indexPath, animated: true)
+        
         DispatchQueue.main.async {
-            tableView.deselectRow(at: indexPath, animated: true)
-            
             let selectedProduct = self.viewModel.datasource.products[indexPath.row]
-            let detailsViewModel = AccountDetailsViewModel(service: DefaultNetworkService(), product: selectedProduct, email: self.viewModel.datasource.securedData.email)
-            let storyboard = UIStoryboard(name: Storyboards.AccountDetails, bundle: nil)
-            guard let detailsVC = storyboard.instantiateViewController(withIdentifier: Identifiers.AccountDetailsVC) as? AccountDetailsVC else { return }
-            detailsVC.viewModel = detailsViewModel
-            self.show(detailsVC, sender: nil)
+            self.navigate(selectedProduct)
         }
     }
 }
+
+//MARK: - ViewModel Delegate Methods
 
 extension AccountsVC: AccountsViewModelOutput, ActionHandlers {
     

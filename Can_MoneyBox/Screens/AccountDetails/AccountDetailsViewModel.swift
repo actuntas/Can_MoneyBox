@@ -15,121 +15,101 @@ protocol AccountDetailsViewModelProtocol: AnyObject {
 
 struct AccountDetailsViewModelDatasource {
     let product: ProductResponse
-    let email: String
+    var securedData: Auth
 }
 
 final class AccountDetailsViewModel {
     
     private let service: NetworkService
-    private var status: AuthorizationStatus = .authorized
     private let keychain = KeychainManager.standard
     
     var amount: String!
     var datasource: AccountDetailsViewModelDatasource
-    var authData: Auth!
-    
-    init(service: NetworkService, product: ProductResponse, email: String) {
-        self.service = service
-        self.datasource = AccountDetailsViewModelDatasource(product: product, email: email)
-    }
-    
     var request = IncrementRequest()
+    let group = DispatchGroup()
     weak var output: AccountDetailsViewModelProtocol?
+    
+    init(service: NetworkService, product: ProductResponse, authData: Auth) {
+        self.service = service
+        self.datasource = AccountDetailsViewModelDatasource(product: product, securedData: authData)
+    }
     
     func incrementAmountByTen(amount: String) {
         self.amount = amount
         
-        switch status {
-            
-        case .authorized:
-            
-            getToken()
-            
-            request.headers.updateValue("Bearer \(authData.token)", forKey: "Authorization")
-            request.httpBody = ["Amount":amount, "InvestorProductId":datasource.product.id]
-            
-            service.perform(request) { [weak self] result in
-                switch result {
-                    
-                case .success(let amountData):
-                    let newAmount = String(amountData.moneybox)
+        
+        request.headers.updateValue("Bearer \(datasource.securedData.token)", forKey: "Authorization")
+        request.httpBody = ["Amount":amount, "InvestorProductId":datasource.product.id]
+        
+        service.perform(request) { [weak self] result in
+            switch result {
+                
+            case .success(let amountData):
+                let newAmount = String(amountData.moneybox)
+                DispatchQueue.main.async {
+                    self?.output?.updateAmount(newAmount)
+                    print(newAmount)
+                }
+                
+            case .failure(let error):
+                if error == .invalidCredentials {
+                    self?.refreshTokenAndRetry()
+                } else {
                     DispatchQueue.main.async {
-                        self?.output?.updateAmount(newAmount)
+                        self?.output?.showAlert(title: "Error", message: error.localizedDescription, buttonTitle: "Ok")
                     }
                     
-                case .failure(let error):
-                    if error == .invalidCredentials {
-                   
-                        self?.refreshToken()
-                    } else {
-                        DispatchQueue.main.async {
-                            self?.output?.showAlert(title: "Error", message: error.localizedDescription, buttonTitle: "Ok")
-                        }
-                        
-                    }
                 }
             }
-            
-        case .authorizing:
-            self.status = .authorized
+        }
+        
+    }
+    
+}
+
+extension AccountDetailsViewModel {
+
+    private func refreshTokenAndRetry() {
+        print("retry fired")
+        group.enter()
+        
+        getRefreshToken() { _ in
+            self.group.leave()
+        }
+        
+        DispatchQueue.global(qos: .default).async {
+            self.group.wait()
             self.incrementAmountByTen(amount: self.amount)
         }
         
     }
     
-    private func getToken() {
-        guard let securedData = keychain.read(service: "moneybox.com", account: datasource.email, type: Auth.self) else { return } // alert
-        self.authData = securedData
-    }
-    
-    private func refreshToken() {
-        var loginRequest = LoginRequest()
-        status = .authorizing
-        loginRequest.httpBody = ["Email":authData.email, "Password":authData.password, "Idfa":"idfa"]
+    private func getRefreshToken(completion: @escaping (Bool) -> ())  {
         
-        service.perform(loginRequest) { [weak self] result in
-            
-            guard let self = self else { return }
-            
-            switch result {
+        var loginRequest = LoginRequest()
+        
+        loginRequest.httpBody = ["Email":datasource.securedData.email, "Password":datasource.securedData.password, "Idfa":"idfa"]
+        
+            service.perform(loginRequest) { [weak self] result in
                 
-            case .success(let user):
-                let token = user.session.bearerToken
+                guard let self = self else { return }
                 
-                
-                
-                //self.status = .authorized sil
-                DispatchQueue.global(qos: .userInitiated).sync {
-                    self.cacheToken(token: token)
-                    self.incrementAmountByTen(amount: self.amount)
+                switch result {
+                    
+                case .success(let newTokenData):
+                    self.datasource.securedData.token = newTokenData.session.bearerToken
+                    self.keychain.save(self.datasource.securedData, service: KeychainKey.Company, account: self.datasource.securedData.email) //re-cache
+                    completion(true)
+                case .failure(_):
+                    completion(false)
                 }
-                
-            
-        case .failure(let error):
-            print(error.localizedDescription)
+            }
+        }
+    
+}
+    
+    extension AccountDetailsViewModel {
+        func sendDatasource() {
+            output?.displayDatasource(datasource: datasource)
         }
     }
-    
-}
-   
-
-private func cacheToken(token: String) {
-    self.authData = Auth(token: token, email: authData.email, password: authData.password)
-    keychain.save(authData, service: "moneybox", account: authData.email)
-    status = .authorized
-}
-    
-
-
-private enum AuthorizationStatus {
-    case authorized
-    case authorizing
-}
-
-}
-
-extension AccountDetailsViewModel {
-    func sendDatasource() {
-        output?.displayDatasource(datasource: datasource)
-    }
-}

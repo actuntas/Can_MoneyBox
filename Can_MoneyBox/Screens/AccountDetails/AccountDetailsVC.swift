@@ -11,6 +11,8 @@ private typealias ActionHandlers = LoadingHandler & ErrorHandler
 
 class AccountDetailsVC: UIViewController, ActionHandlers {
     
+    //MARK: - IBOutlets and Variables
+    
     @IBOutlet weak var detailCardView: RoundedShadowView!
     @IBOutlet weak var productNameLabel: UILabel!
     @IBOutlet weak var typeLabel: UILabel!
@@ -26,11 +28,15 @@ class AccountDetailsVC: UIViewController, ActionHandlers {
         return button
     }()
     
+    //MARK: - Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configure()
         viewModel.sendDatasource()
     }
+    
+    //MARK: - Helper Functions
     
     private func configure() {
         title = viewModel.datasource.product.product.name
@@ -61,19 +67,19 @@ class AccountDetailsVC: UIViewController, ActionHandlers {
     }
 }
 
+//MARK: - ViewModel Delegate Methods
+
 extension AccountDetailsVC: AccountDetailsViewModelProtocol {
     func updateAmount(_ amount: String) {
-        self.moneyBoxLabel.text = amount
+        self.moneyBoxLabel.text = "Moneybox: £ \(amount)"
     }
     
     func displayDatasource(datasource: AccountDetailsViewModelDatasource) {
-        self.moneyBoxLabel.text = "Moneybox: \(datasource.product.moneybox)"
+        self.moneyBoxLabel.text = "Moneybox: £ \(datasource.product.moneybox)"
         self.annualLimitLabel.text = "Annual Limit: \(datasource.product.product.annualLimit)"
         self.productNameLabel.text = datasource.product.product.friendlyName
         self.cDayMessageLabel.text = datasource.product.collectionDayMessage
         self.typeLabel.text = "Type: \(datasource.product.product.type)"
-
     }
-    
     
 }

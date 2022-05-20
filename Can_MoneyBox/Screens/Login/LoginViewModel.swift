@@ -23,13 +23,12 @@ final class LoginViewModel {
     
     let service: NetworkService
     let keychain = KeychainManager.standard
+    var request = LoginRequest()
+    weak var output: LoginViewModelOutput?
     
     init(service: NetworkService) {
         self.service = service
     }
-    
-    var request = LoginRequest()
-    weak var output: LoginViewModelOutput?
     
     func login(email: String, password: String) {
         
@@ -61,7 +60,7 @@ extension LoginViewModel {
 }
 
 extension LoginViewModel {
-    func validateAndUpdateErrors(text: String?, type: LoginViewModelInput) -> Bool {
+    func validateAndUpdateErrors(text: String?, type: LoginViewModelInputTypes) -> Bool {
         switch type {
         case .email:
             guard let email = text, !email.isEmpty else {

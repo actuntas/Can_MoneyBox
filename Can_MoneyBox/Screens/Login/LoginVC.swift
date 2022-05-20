@@ -11,6 +11,8 @@ private typealias ActionHandlers = LoadingHandler & ErrorHandler
 
 class LoginVC: UIViewController, ActionHandlers {
     
+    //MARK: - IBOutlets and Variables
+    
     @IBOutlet weak var emailTextField: LoginTextfield!
     @IBOutlet weak var passwordTextField: LoginTextfield!
     @IBOutlet weak var emailErrorLabel: UILabel!
@@ -25,10 +27,14 @@ class LoginVC: UIViewController, ActionHandlers {
     
     var viewModel: LoginViewModel!
     
+    //MARK: - Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configure()
     }
+    
+    //MARK: - Helper Functions
     
     private func configure() {
         view.addSubview(loginButton)
@@ -78,12 +84,15 @@ class LoginVC: UIViewController, ActionHandlers {
     }
 }
 
+//MARK: - TextField Delegate Methods
+
 extension LoginVC: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
         changeButtonState(shouldEnable: checkValidation())
     }
 }
-// markları ekle
+//MARK: - ViewModel Methods
+
 extension LoginVC: LoginViewModelOutput {
     
     

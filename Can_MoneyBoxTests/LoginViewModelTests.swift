@@ -25,16 +25,20 @@ class LoginViewModelTests: XCTestCase {
     func testValidation()  {
         
         // given
-        let result = sut.validateAndUpdateErrors(text: "test", type: .email)
-        XCTAssertTrue(result)
         
-    }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+        let email = "test"
+        let password = "123dDerTyfds--"
+        
+        //when
+        let emailInvalid = sut.validateAndUpdateErrors(text: email, type: .email)
+        let passwordValid = sut.validateAndUpdateErrors(text: password, type: .password)
+        
+        
+        
+        //then
+        XCTAssertFalse(emailInvalid)
+        XCTAssertTrue(passwordValid)
+        
     }
 
 }

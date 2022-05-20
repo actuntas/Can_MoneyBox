@@ -33,12 +33,7 @@ class DefaultNetworkService: NetworkService {
             }
             
             guard let responseCode = (response as? HTTPURLResponse)?.statusCode, responseCode != 401 else {
-                print("token expired --------------")
                 return completion(.failure(.invalidCredentials))
-            }
-            
-            guard responseCode != 403 else {
-                return completion(.failure(.invalidRequest))
             }
             
             guard 200..<300 ~= responseCode else {
@@ -53,7 +48,6 @@ class DefaultNetworkService: NetworkService {
             do {
                 try completion(.success(request.decode(data)))
             } catch {
-                print(error)
                 completion(.failure(.invalidData))
             }
             

@@ -141,7 +141,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="TwN-ry-6zM">
-                        <barButtonItem key="rightBarButtonItem" title="Logout" style="plain" id="FJb-eG-lfF">
+                        <barButtonItem key="rightBarButtonItem" title="Logout" style="done" id="FJb-eG-lfF">
                             <color key="tintColor" systemColor="systemRedColor"/>
                             <connections>
                                 <action selector="logoutPressed:" destination="Y6W-OH-hqX" id="fgw-Q5-1Aq"/>

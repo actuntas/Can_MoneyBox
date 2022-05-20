@@ -7,6 +7,6 @@
 
 import Foundation
 
-enum LoginViewModelInput {
+enum LoginViewModelInputTypes {
     case email, password
 }

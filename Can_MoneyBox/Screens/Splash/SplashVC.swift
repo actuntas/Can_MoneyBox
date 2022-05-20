@@ -8,7 +8,7 @@
 import UIKit
 
 class SplashVC: UIViewController {
-    
+
     var loginVC: LoginVC!
     
     override func viewDidAppear(_ animated: Bool) {

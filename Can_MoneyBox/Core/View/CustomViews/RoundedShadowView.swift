@@ -7,7 +7,6 @@
 
 import UIKit
 
-/// change this
 public class RoundedShadowView: UIView {
     
     @IBInspectable var cornerRadius: CGFloat = 8 { didSet { self.layer.cornerRadius = cornerRadius }}

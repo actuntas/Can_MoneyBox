@@ -24,12 +24,12 @@ class RoundedButton: UIButton {
         self.backgroundColor = backgroundColor
         self.setTitle(title, for: .normal)
         self.setTitleColor(.purple, for: .normal)
-        self.setTitleColor(.lightGray, for: .disabled)
+        self.setTitleColor(.white, for: .disabled)
     }
     
     private func configure() {
         layer.cornerRadius = 25
-        layer.borderColor = UIColor.purple.cgColor
+        layer.borderColor = UIColor.white.cgColor
         layer.borderWidth = 2
         setTitleColor(.white, for: .normal)
         titleLabel?.font = UIFont.preferredFont(forTextStyle: .headline)

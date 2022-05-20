@@ -10,5 +10,4 @@ import Foundation
 enum KeychainError: String {
     case decodeError = "Fail to decode item for keychain"
     case encodeError = "Fail to encode item for keychain"
-    
 }
