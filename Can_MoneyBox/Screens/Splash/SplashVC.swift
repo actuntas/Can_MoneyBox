@@ -16,14 +16,14 @@ class SplashVC: UIViewController, Storyboarded {
     }
     
     private func coordinate() {
-
-            guard let name = UserDefaults.standard.string(forKey: UserDefaultsKeys.Name),
-                  let email = UserDefaults.standard.string(forKey: UserDefaultsKeys.Email) else {
-                loadLoginScreen()
-                return
-            }
-            
-            loadAccountsScreen(name: name, email: email)
+        
+        guard let name = UserDefaults.standard.string(forKey: UserDefaultsKeys.Name),
+              let email = UserDefaults.standard.string(forKey: UserDefaultsKeys.Email) else {
+            loadLoginScreen()
+            return
+        }
+        
+        loadAccountsScreen(name: name, email: email)
     }
     
     private func loadLoginScreen() {
