@@ -231,13 +231,13 @@
 		3225F88628308DD900B10A29 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				3225F88928308E0800B10A29 /* Data */,
 				32E33DFB283537890045981D /* Keychain */,
 				32912C022831274A00D79A91 /* Model */,
 				32CE461C28343E2C00B520F3 /* Extension */,
 				32912C3C2831D43900D79A91 /* Helper */,
 				32232CFB283490650091418D /* View */,
 				32912C092831292B00D79A91 /* Utils */,
-				3225F88928308E0800B10A29 /* Data */,
 			);
 			path = Core;
 			sourceTree = "<group>";
