@@ -9,7 +9,7 @@ import UIKit
 
 private typealias ActionHandlers = LoadingHandler & ErrorHandler
 
-class AccountsVC: UIViewController {
+class AccountsVC: UIViewController, Storyboarded {
     
     //MARK: - IBOutlets and Variables
     
@@ -40,8 +40,7 @@ class AccountsVC: UIViewController {
     private func navigate(_ selectedProduct: ProductResponse) {
         
         let detailsViewModel = AccountDetailsViewModel(service: DefaultNetworkService(), product: selectedProduct, authData: self.viewModel.datasource.securedData)
-        let storyboard = UIStoryboard(name: Storyboards.AccountDetails, bundle: nil)
-        guard let detailsVC = storyboard.instantiateViewController(withIdentifier: Identifiers.AccountDetailsVC) as? AccountDetailsVC else { return }
+        let detailsVC = AccountDetailsVC.instantiate(storyboard: Storyboards.AccountDetails)
         detailsVC.viewModel = detailsViewModel
         self.show(detailsVC, sender: nil)
     }
@@ -52,9 +51,6 @@ class AccountsVC: UIViewController {
         self.logoutButton.isEnabled = false
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.7) {
-            let storyboard = UIStoryboard(name: Storyboards.Splash, bundle: nil)
-            guard let splashVC = storyboard.instantiateViewController(withIdentifier: Identifiers.SplashVC) as? SplashVC else { return }
-            splashVC.status = .loggedOut
             self.dismiss(animated: true)
         }
     }

@@ -7,11 +7,7 @@
 
 import UIKit
 
-class SplashVC: UIViewController {
-
-    private var loginVC: LoginVC!
-
-    var status: LoginStatus = .fresh
+class SplashVC: UIViewController, Storyboarded {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -20,8 +16,7 @@ class SplashVC: UIViewController {
     }
     
     private func coordinate() {
-        switch status {
-        case .fresh:
+
             guard let name = UserDefaults.standard.string(forKey: UserDefaultsKeys.Name),
                   let email = UserDefaults.standard.string(forKey: UserDefaultsKeys.Email) else {
                 loadLoginScreen()
@@ -29,15 +24,10 @@ class SplashVC: UIViewController {
             }
             
             loadAccountsScreen(name: name, email: email)
-            
-        case .loggedOut:
-            loadLoginScreen()
-        }
     }
     
     private func loadLoginScreen() {
-        let storyboard = UIStoryboard(name: Storyboards.Login, bundle: nil)
-        loginVC = storyboard.instantiateViewController(withIdentifier: Identifiers.LoginVC) as? LoginVC
+        let loginVC = LoginVC.instantiate(storyboard: Storyboards.Login)
         loginVC.modalPresentationStyle = .fullScreen
         let viewModel = LoginViewModel(service: DefaultNetworkService())
         loginVC.viewModel = viewModel

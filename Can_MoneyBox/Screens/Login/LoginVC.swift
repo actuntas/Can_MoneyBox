@@ -9,7 +9,7 @@ import UIKit
 
 private typealias ActionHandlers = LoadingHandler & ErrorHandler
 
-class LoginVC: UIViewController, ActionHandlers {
+class LoginVC: UIViewController, ActionHandlers, Storyboarded {
     
     //MARK: - IBOutlets and Variables
     
