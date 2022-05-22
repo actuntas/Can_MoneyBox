@@ -45,9 +45,9 @@ final class AccountDetailsViewModel {
             switch result {
                 
             case .success(let amountData):
-                let newAmount = String(amountData.moneybox)
+                let newAmount = Int(amountData.moneybox)
                 DispatchQueue.main.async {
-                    self?.output?.updateAmount(newAmount)
+                    self?.output?.updateAmount(String(newAmount))
                     print(newAmount)
                 }
                 
