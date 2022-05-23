@@ -35,7 +35,7 @@ class AccountDetailsVC: UIViewController, ActionHandlers, Storyboarded {
     override func viewDidLoad() {
         super.viewDidLoad()
         configure()
-        viewModel.sendDatasource()
+        viewModel.getDatasource()
     }
     
     //MARK: - Helper Functions

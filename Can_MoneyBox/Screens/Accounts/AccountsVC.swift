@@ -17,7 +17,7 @@ class AccountsVC: UIViewController, Storyboarded {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var logoutButton: UIBarButtonItem!
-
+    
     var viewModel: AccountsViewModel!
     
     //MARK: - Lifecycle
@@ -29,15 +29,15 @@ class AccountsVC: UIViewController, Storyboarded {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        viewModel.updateTitle()
         viewModel.getAccounts()
     }
     
     //MARK: - Helper Functions
     
     private func configure() {
-        viewModel.output = self
         navigationItem.setHidesBackButton(true, animated: false)
+        viewModel.output = self
+        viewModel.updateTitle()
     }
     
     @IBAction func logoutPressed(_ sender: Any) {
@@ -46,7 +46,6 @@ class AccountsVC: UIViewController, Storyboarded {
         self.logoutButton.isEnabled = false
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.7) {
-            //self.dismiss(animated: true)
             self.coordinator?.logout()
         }
     }
@@ -54,6 +53,7 @@ class AccountsVC: UIViewController, Storyboarded {
 }
 
 //MARK: - TableView Delegate Methods
+
 extension AccountsVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -79,7 +79,7 @@ extension AccountsVC: UITableViewDelegate, UITableViewDataSource {
         
         tableView.deselectRow(at: indexPath, animated: true)
         let selectedProduct = self.viewModel.datasource.products[indexPath.row]
-        let detailsViewModel = AccountDetailsViewModel(service: DefaultNetworkService(), product: selectedProduct, authData: self.viewModel.datasource.securedData)
+        let detailsViewModel = AccountDetailsViewModel(service: DefaultNetworkService(), product: selectedProduct, authData: self.viewModel.datasource.securedData, request: IncrementRequest())
         
         DispatchQueue.main.async {
             self.coordinator?.showDetails(viewModel: detailsViewModel)
@@ -103,4 +103,4 @@ extension AccountsVC: AccountsViewModelOutput, ActionHandlers {
     
     
 }
-    
+

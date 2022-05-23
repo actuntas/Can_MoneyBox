@@ -84,20 +84,20 @@ extension AccountsViewModel {
         
         loginRequest.httpBody = ["Email":datasource.securedData.email, "Password":datasource.securedData.password, "Idfa":"idfa"]
         
-            service.perform(loginRequest) { [weak self] result in
+        service.perform(loginRequest) { [weak self] result in
+            
+            guard let self = self else { return }
+            
+            switch result {
                 
-                guard let self = self else { return }
-                
-                switch result {
-                    
-                case .success(let newTokenData):
-                    self.datasource.securedData.token = newTokenData.session.bearerToken
-                    KeychainManager.standard.save(self.datasource.securedData, service: KeychainKey.Company, account: self.datasource.securedData.email) //re-cache
-                    completion(true)
-                case .failure(_):
-                    completion(false)
-                }
+            case .success(let newTokenData):
+                self.datasource.securedData.token = newTokenData.session.bearerToken
+                KeychainManager.standard.save(self.datasource.securedData, service: KeychainKey.Company, account: self.datasource.securedData.email) //re-cache
+                completion(true)
+            case .failure(_):
+                completion(false)
             }
+        }
     }
 }
 
@@ -107,7 +107,7 @@ extension AccountsViewModel {
     }
     
     var titleForHeaderInSection: String {
-        return "Total Plan Value: £\(datasource.totalValue ?? 0)"
+        return "Total Plan Value: £ \(datasource.totalValue ?? 0)"
     }
     
 }

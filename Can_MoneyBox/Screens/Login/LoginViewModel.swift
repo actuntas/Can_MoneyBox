@@ -38,12 +38,17 @@ final class LoginViewModel {
             switch result {
                 
             case .success(let user):
+                
                 let token = user.session.bearerToken
                 self?.cacheAuth(authData: Auth(token: token, email: email, password: password))
                 self?.cacheInfo(name: user.user.firstName, email: user.user.email)
                 let datasource = LoginViewModelDatasource(name: user.user.firstName, secureData: Auth(token: token, email: email, password: password))
-                self?.output?.loginCompleted(datasource: datasource)
+                DispatchQueue.main.async {
+                    self?.output?.loginCompleted(datasource: datasource)
+                }
+                
             case .failure(let error):
+                
                 DispatchQueue.main.async {
                     self?.output?.showAlert(title: "Error", message: error.localizedDescription, buttonTitle: "Ok")
                 }

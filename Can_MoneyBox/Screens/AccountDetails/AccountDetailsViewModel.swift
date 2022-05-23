@@ -21,17 +21,18 @@ struct AccountDetailsViewModelDatasource {
 final class AccountDetailsViewModel {
     
     private let service: NetworkService
-    private let keychain = KeychainManager.standard
     
     var amount: String!
     var datasource: AccountDetailsViewModelDatasource
     var request = IncrementRequest()
     let group = DispatchGroup()
+    
     weak var output: AccountDetailsViewModelProtocol?
     
-    init(service: NetworkService, product: ProductResponse, authData: Auth) {
+    init(service: NetworkService, product: ProductResponse, authData: Auth, request: IncrementRequest) {
         self.service = service
         self.datasource = AccountDetailsViewModelDatasource(product: product, securedData: authData)
+        self.request = request
     }
     
     func incrementAmountByTen(amount: String) {
@@ -68,9 +69,8 @@ final class AccountDetailsViewModel {
 }
 
 extension AccountDetailsViewModel {
-
+    
     private func refreshTokenAndRetry() {
-        print("retry fired")
         group.enter()
         
         getRefreshToken() { _ in
@@ -90,26 +90,26 @@ extension AccountDetailsViewModel {
         
         loginRequest.httpBody = ["Email":datasource.securedData.email, "Password":datasource.securedData.password, "Idfa":"idfa"]
         
-            service.perform(loginRequest) { [weak self] result in
+        service.perform(loginRequest) { [weak self] result in
+            
+            guard let self = self else { return }
+            
+            switch result {
                 
-                guard let self = self else { return }
-                
-                switch result {
-                    
-                case .success(let newTokenData):
-                    self.datasource.securedData.token = newTokenData.session.bearerToken
-                    self.keychain.save(self.datasource.securedData, service: KeychainKey.Company, account: self.datasource.securedData.email) 
-                    completion(true)
-                case .failure(_):
-                    completion(false)
-                }
+            case .success(let newTokenData):
+                self.datasource.securedData.token = newTokenData.session.bearerToken
+                KeychainManager.standard.save(self.datasource.securedData, service: KeychainKey.Company, account: self.datasource.securedData.email)
+                completion(true)
+            case .failure(_):
+                completion(false)
             }
         }
+    }
     
 }
-    
-    extension AccountDetailsViewModel {
-        func sendDatasource() {
-            output?.displayDatasource(datasource: datasource)
-        }
+
+extension AccountDetailsViewModel {
+    func getDatasource() {
+        output?.displayDatasource(datasource: datasource)
     }
+}

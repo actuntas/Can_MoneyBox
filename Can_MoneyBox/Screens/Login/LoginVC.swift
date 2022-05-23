@@ -53,18 +53,9 @@ class LoginVC: UIViewController, ActionHandlers, Storyboarded {
         ])
     }
     
-    private func navigateAndInjectDatasource(datasource: LoginViewModelDatasource) {
-        DispatchQueue.main.async {
-            self.changeButtonState(shouldEnable: false)
-            self.removeLoading()
-            self.coordinator?.showAccounts(name: datasource.name, email: datasource.secureData?.email ?? "")
-        }
-        
-    }
-    
     private func changeButtonState(shouldEnable: Bool) {
-            self.loginButton.isEnabled = shouldEnable
-       
+        self.loginButton.isEnabled = shouldEnable
+        
     }
     
     private func checkValidation() -> Bool {
@@ -92,10 +83,9 @@ extension LoginVC: LoginViewModelOutput {
     
     
     func loginCompleted(datasource: LoginViewModelDatasource) {
-        DispatchQueue.main.async {
-            self.navigateAndInjectDatasource(datasource: datasource)
-        }
-        
+        self.changeButtonState(shouldEnable: false)
+        self.removeLoading()
+        self.coordinator?.showAccounts(name: datasource.name, email: datasource.secureData?.email ?? "")
     }
     
     func handleEmailError(shouldShowError: Bool) {
@@ -105,4 +95,5 @@ extension LoginVC: LoginViewModelOutput {
     func handlePasswordError(shouldShowError: Bool) {
         passwordErrorLabel.alpha = shouldShowError ? 1 : 0
     }
+    
 }
