@@ -13,6 +13,8 @@ class LoginVC: UIViewController, ActionHandlers, Storyboarded {
     
     //MARK: - IBOutlets and Variables
     
+    weak var coordinator: MainCoordinator?
+    
     @IBOutlet weak var emailTextField: LoginTextfield!
     @IBOutlet weak var passwordTextField: LoginTextfield!
     @IBOutlet weak var emailErrorLabel: UILabel!
@@ -55,14 +57,7 @@ class LoginVC: UIViewController, ActionHandlers, Storyboarded {
         DispatchQueue.main.async {
             self.changeButtonState(shouldEnable: false)
             self.removeLoading()
-            let storyboard = UIStoryboard(name: Storyboards.Accounts, bundle: nil)
-            guard let accountsNC = storyboard.instantiateViewController(withIdentifier: Identifiers.AccountsNC) as? UINavigationController,
-                  let accountsVC = accountsNC.viewControllers.first as? AccountsVC,
-                  let _secureData = datasource.secureData else { return }
-            accountsNC.modalPresentationStyle = .fullScreen
-            let accountsViewModel = AccountsViewModel(service: DefaultNetworkService(), datasource: AccountsViewModelDatasource(name: datasource.name, securedData: _secureData))
-            accountsVC.viewModel = accountsViewModel
-            self.show(accountsNC, sender: nil)
+            self.coordinator?.showAccounts(name: datasource.name, email: datasource.secureData?.email ?? "")
         }
         
     }

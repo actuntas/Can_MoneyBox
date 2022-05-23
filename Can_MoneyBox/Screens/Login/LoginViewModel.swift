@@ -22,12 +22,12 @@ struct LoginViewModelDatasource {
 final class LoginViewModel {
     
     let service: NetworkService
-    let keychain = KeychainManager.standard
-    var request = LoginRequest()
+    var request: LoginRequest
     weak var output: LoginViewModelOutput?
     
-    init(service: NetworkService) {
+    init(service: NetworkService, request: LoginRequest) {
         self.service = service
+        self.request = request
     }
     
     func login(email: String, password: String) {
@@ -56,7 +56,7 @@ final class LoginViewModel {
 
 extension LoginViewModel {
     private func cacheAuth(authData: Auth) {
-           self.keychain.save(authData, service: "moneybox.com", account: authData.email)
+        KeychainManager.standard.save(authData, service: "moneybox.com", account: authData.email)
     }
 }
 

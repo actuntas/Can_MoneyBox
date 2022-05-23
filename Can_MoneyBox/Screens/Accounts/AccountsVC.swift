@@ -13,6 +13,8 @@ class AccountsVC: UIViewController, Storyboarded {
     
     //MARK: - IBOutlets and Variables
     
+    weak var coordinator: MainCoordinator?
+    
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var logoutButton: UIBarButtonItem!
 
@@ -35,14 +37,7 @@ class AccountsVC: UIViewController, Storyboarded {
     
     private func configure() {
         viewModel.output = self
-    }
-    
-    private func navigate(_ selectedProduct: ProductResponse) {
-        
-        let detailsViewModel = AccountDetailsViewModel(service: DefaultNetworkService(), product: selectedProduct, authData: self.viewModel.datasource.securedData)
-        let detailsVC = AccountDetailsVC.instantiate(storyboard: Storyboards.AccountDetails)
-        detailsVC.viewModel = detailsViewModel
-        self.show(detailsVC, sender: nil)
+        navigationItem.setHidesBackButton(true, animated: false)
     }
     
     @IBAction func logoutPressed(_ sender: Any) {
@@ -51,7 +46,8 @@ class AccountsVC: UIViewController, Storyboarded {
         self.logoutButton.isEnabled = false
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.7) {
-            self.dismiss(animated: true)
+            //self.dismiss(animated: true)
+            self.coordinator?.logout()
         }
     }
     
@@ -82,10 +78,11 @@ extension AccountsVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         tableView.deselectRow(at: indexPath, animated: true)
+        let selectedProduct = self.viewModel.datasource.products[indexPath.row]
+        let detailsViewModel = AccountDetailsViewModel(service: DefaultNetworkService(), product: selectedProduct, authData: self.viewModel.datasource.securedData)
         
         DispatchQueue.main.async {
-            let selectedProduct = self.viewModel.datasource.products[indexPath.row]
-            self.navigate(selectedProduct)
+            self.coordinator?.showDetails(viewModel: detailsViewModel)
         }
     }
 }

@@ -13,6 +13,8 @@ class AccountDetailsVC: UIViewController, ActionHandlers, Storyboarded {
     
     //MARK: - IBOutlets and Variables
     
+    weak var coordinator: Coordinator?
+    
     @IBOutlet weak var detailCardView: RoundedShadowView!
     @IBOutlet weak var productNameLabel: UILabel!
     @IBOutlet weak var typeLabel: UILabel!

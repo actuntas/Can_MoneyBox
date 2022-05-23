@@ -25,15 +25,15 @@ final class AccountsViewModel {
     
     let service: NetworkService
     var datasource: AccountsViewModelDatasource
-    let keychain = KeychainManager.standard
-    var request = AccountsRequest()
+    var request: AccountsRequest
     let group = DispatchGroup()
     
     weak var output: AccountsViewModelOutput?
     
-    init(service: NetworkService, datasource: AccountsViewModelDatasource) {
+    init(service: NetworkService, datasource: AccountsViewModelDatasource, request: AccountsRequest) {
         self.service = service
         self.datasource = datasource
+        self.request = request
     }
     
     func getAccounts() {
@@ -92,7 +92,7 @@ extension AccountsViewModel {
                     
                 case .success(let newTokenData):
                     self.datasource.securedData.token = newTokenData.session.bearerToken
-                    self.keychain.save(self.datasource.securedData, service: KeychainKey.Company, account: self.datasource.securedData.email) //re-cache
+                    KeychainManager.standard.save(self.datasource.securedData, service: KeychainKey.Company, account: self.datasource.securedData.email) //re-cache
                     completion(true)
                 case .failure(_):
                     completion(false)
