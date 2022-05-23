@@ -44,7 +44,6 @@ class MainCoordinator: Coordinator {
         vc.coordinator = self
         let accountsViewModel = AccountsViewModel(service: DefaultNetworkService(), datasource: AccountsViewModelDatasource(name: name, securedData: _secureData), request: AccountsRequest())
         vc.viewModel = accountsViewModel
-        //let viewModel = AccountsViewModel(service: DefaultNetworkService(), datasource: AccountsViewModelDatasource(name: <#T##String#>, securedData: <#T##Auth#>))
         navigationController.pushViewController(vc, animated: true)
     }
     
