@@ -14,7 +14,7 @@ class LoginViewModelTests: XCTestCase {
 
     override func setUpWithError() throws {
         try super.setUpWithError()
-        sut = LoginViewModel(service: DefaultNetworkService())
+        sut = LoginViewModel(service: DefaultNetworkService(), request: LoginRequest())
     }
 
     override func tearDownWithError() throws {
