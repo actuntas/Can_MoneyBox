@@ -7,8 +7,10 @@ iOS13+
 
 MVVM design pattern was preferred to make the project more readable, testable and maintainable.
 
+Coordinator pattern was preffered to decouple navigation logic from ViewControllers.
 
 ## Dependencies
+
 SPM is used as Dependency Manager. <br />
 Only `IQKeyboardManagerSwift` is used in the project as a 3rd party dependency to handle keyboard layout and toolbar.
 
@@ -16,12 +18,14 @@ Only `IQKeyboardManagerSwift` is used in the project as a 3rd party dependency t
 
 * It was really a long week. Thank you for your patience.
 
-* I have very similar two ViewModels If I had more time that would be the thing I want to improve.
+* I have very similar ViewModels If I had more time that would be the thing to improve.
 
 * Regardless of this project succeeds or not feedbacks are always welcome. <3
 
 ## Sources
 
-* Modern Concurrency in Swift / RayWenderlich.com
+* Modern Concurrency in Swift / raywenderlich.com
 
-* Real-World iOS by Tutorials / RayWenderlich.com
+* Real-World iOS by Tutorials / raywenderlich.com
+
+* https://www.hackingwithswift.com/articles/71/how-to-use-the-coordinator-pattern-in-ios-apps
