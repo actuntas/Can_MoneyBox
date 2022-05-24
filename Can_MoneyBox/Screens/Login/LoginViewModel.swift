@@ -12,6 +12,7 @@ protocol LoginViewModelOutput: AnyObject {
     func handlePasswordError(shouldShowError: Bool)
     func loginCompleted(datasource: LoginViewModelDatasource)
     func showAlert(title: String, message: String, buttonTitle: String)
+    func removeLoading()
 }
 
 struct LoginViewModelDatasource {
@@ -50,6 +51,7 @@ final class LoginViewModel {
                 
                 DispatchQueue.main.async {
                     self?.output?.showAlert(title: "Error", message: error.localizedDescription, buttonTitle: "Ok")
+                    self?.output?.removeLoading()
                 }
                 
             }

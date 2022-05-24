@@ -64,7 +64,7 @@ final class AccountsViewModel {
 
 extension AccountsViewModel {
     private func refreshTokenAndRetry() {
-        print("retry fired")
+
         group.enter()
         
         getRefreshToken() { _ in

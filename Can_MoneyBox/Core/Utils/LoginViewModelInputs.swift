@@ -10,7 +10,3 @@ import Foundation
 enum LoginViewModelInputTypes {
     case email, password
 }
-
-enum LoginStatus {
-    case fresh, loggedOut
-}
