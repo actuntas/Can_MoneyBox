@@ -24,20 +24,19 @@ final class AccountDetailsViewModel {
     
     var amount: String!
     var datasource: AccountDetailsViewModelDatasource
-    var request = IncrementRequest()
     let group = DispatchGroup()
     
     weak var output: AccountDetailsViewModelProtocol?
     
-    init(service: NetworkService, product: ProductResponse, authData: Auth, request: IncrementRequest) {
+    init(service: NetworkService, product: ProductResponse, authData: Auth) {
         self.service = service
         self.datasource = AccountDetailsViewModelDatasource(product: product, securedData: authData)
-        self.request = request
     }
     
     func incrementAmountByTen(amount: String) {
         self.amount = amount
         
+        var request = IncrementRequest()
         
         request.headers.updateValue("Bearer \(datasource.securedData.token)", forKey: "Authorization")
         request.httpBody = ["Amount":amount, "InvestorProductId":datasource.product.id]

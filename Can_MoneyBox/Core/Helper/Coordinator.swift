@@ -31,18 +31,18 @@ class MainCoordinator: Coordinator {
     func showLogin() {
         let vc = LoginVC.instantiate(storyboard: Storyboards.Login)
         vc.coordinator = self
-        let viewModel = LoginViewModel(service: DefaultNetworkService(), request: LoginRequest())
+        let viewModel = LoginViewModel(service: DefaultNetworkService())
         vc.viewModel = viewModel
         navigationController.pushViewController(vc, animated: false)
     }
     
     
-    func showAccounts(name: String, email: String) { //on vc coordinator?.login will trigger this
+    func showAccounts(name: String, email: String) {
         let vc = AccountsVC.instantiate(storyboard: Storyboards.Accounts)
         navigationController.setNavigationBarHidden(false, animated: false)
         guard let _secureData = KeychainManager.standard.read(service: KeychainKey.Company, account: email, type: Auth.self) else { return }
         vc.coordinator = self
-        let accountsViewModel = AccountsViewModel(service: DefaultNetworkService(), datasource: AccountsViewModelDatasource(name: name, securedData: _secureData), request: AccountsRequest())
+        let accountsViewModel = AccountsViewModel(service: DefaultNetworkService(), datasource: AccountsViewModelDatasource(name: name, securedData: _secureData))
         vc.viewModel = accountsViewModel
         navigationController.pushViewController(vc, animated: true)
     }

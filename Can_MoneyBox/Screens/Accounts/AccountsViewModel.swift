@@ -25,22 +25,22 @@ final class AccountsViewModel {
     
     let service: NetworkService
     var datasource: AccountsViewModelDatasource
-    var request: AccountsRequest
     let group = DispatchGroup()
     
     weak var output: AccountsViewModelOutput?
     
-    init(service: NetworkService, datasource: AccountsViewModelDatasource, request: AccountsRequest) {
+    init(service: NetworkService, datasource: AccountsViewModelDatasource) {
         self.service = service
         self.datasource = datasource
-        self.request = request
     }
     
     func getAccounts() {
         
-        self.request.headers.updateValue("Bearer \(datasource.securedData.token)", forKey: "Authorization")
+        var request = AccountsRequest()
         
-        self.service.perform(self.request) { [weak self] result in
+        request.headers.updateValue("Bearer \(datasource.securedData.token)", forKey: "Authorization")
+        
+        self.service.perform(request) { [weak self] result in
             switch result {
             case .success(let accountData):
                 print(accountData)

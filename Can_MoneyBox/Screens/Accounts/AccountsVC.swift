@@ -79,7 +79,7 @@ extension AccountsVC: UITableViewDelegate, UITableViewDataSource {
         
         tableView.deselectRow(at: indexPath, animated: true)
         let selectedProduct = self.viewModel.datasource.products[indexPath.row]
-        let detailsViewModel = AccountDetailsViewModel(service: DefaultNetworkService(), product: selectedProduct, authData: self.viewModel.datasource.securedData, request: IncrementRequest())
+        let detailsViewModel = AccountDetailsViewModel(service: DefaultNetworkService(), product: selectedProduct, authData: self.viewModel.datasource.securedData)
         
         DispatchQueue.main.async {
             self.coordinator?.showDetails(viewModel: detailsViewModel)

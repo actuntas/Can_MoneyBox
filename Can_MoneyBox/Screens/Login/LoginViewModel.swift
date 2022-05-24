@@ -22,16 +22,15 @@ struct LoginViewModelDatasource {
 final class LoginViewModel {
     
     let service: NetworkService
-    var request: LoginRequest
     weak var output: LoginViewModelOutput?
     
-    init(service: NetworkService, request: LoginRequest) {
+    init(service: NetworkService) {
         self.service = service
-        self.request = request
     }
     
     func login(email: String, password: String) {
         
+        var request = LoginRequest()
         request.httpBody = ["Email":email, "Password":password, "Idfa":"idfa"]
         
         service.perform(request) { [weak self] result in

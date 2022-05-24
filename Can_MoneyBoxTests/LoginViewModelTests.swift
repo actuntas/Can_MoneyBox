@@ -14,7 +14,7 @@ class LoginViewModelTests: XCTestCase {
 
     override func setUpWithError() throws {
         try super.setUpWithError()
-        sut = LoginViewModel(service: DefaultNetworkService(), request: LoginRequest())
+        sut = LoginViewModel(service: DefaultNetworkService())
     }
 
     override func tearDownWithError() throws {
@@ -25,15 +25,12 @@ class LoginViewModelTests: XCTestCase {
     func testValidation()  {
         
         // given
-        
         let email = "test"
         let password = "123dDerTyfds--"
         
         //when
         let emailInvalid = sut.validateAndUpdateErrors(text: email, type: .email)
         let passwordValid = sut.validateAndUpdateErrors(text: password, type: .password)
-        
-        
         
         //then
         XCTAssertFalse(emailInvalid)
