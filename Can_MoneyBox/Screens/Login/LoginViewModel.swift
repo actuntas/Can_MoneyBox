@@ -62,7 +62,7 @@ final class LoginViewModel {
 
 extension LoginViewModel {
     private func cacheAuth(authData: Auth) {
-        KeychainManager.standard.save(authData, service: "moneybox.com", account: authData.email)
+        KeychainManager.standard.save(authData, service: KeychainKey.Company, account: authData.email)
     }
 }
 
@@ -83,7 +83,7 @@ extension LoginViewModel {
                 output?.handlePasswordError(shouldShowError: true)
                 return false
             }
-            let success = password.count > 8
+            let success = password.isSecurePassword
             output?.handlePasswordError(shouldShowError: !success)
             return success
         }

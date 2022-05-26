@@ -34,7 +34,7 @@ extension RequestProtocol {
     func createURLRequest() throws -> URLRequest {
         var components = URLComponents()
         components.scheme = "https"
-        components.host = baseURL
+        components.host = baseURL.addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed)
         components.path = path
         
         guard let url = components.url else { throw NetworkError.invalidURL }

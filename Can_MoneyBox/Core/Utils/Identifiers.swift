@@ -24,7 +24,7 @@ enum Storyboards {
 }
 
 enum KeychainKey {
-    static let Company = "moneybox.com"
+    static let Company = "moneyboxapp.com"
 }
 
 enum UserDefaultsKeys {
