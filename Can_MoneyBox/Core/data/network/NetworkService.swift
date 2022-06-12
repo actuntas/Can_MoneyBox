@@ -12,11 +12,11 @@ protocol NetworkService {
     func perform<Request: RequestProtocol>(_ request: Request, completion: @escaping (Result<Request.Response, NetworkError>) -> Void)
 }
 
-class DefaultNetworkService: NetworkService {
+final class DefaultNetworkService: NetworkService {
     
     private let urlSession: URLSession
     
-    init(urlSession: URLSession = URLSession.shared) {
+    init(urlSession: URLSession = .shared) {
         self.urlSession = urlSession
     }
 
@@ -53,6 +53,5 @@ class DefaultNetworkService: NetworkService {
             
         }.resume()
     }
-    
     
 }

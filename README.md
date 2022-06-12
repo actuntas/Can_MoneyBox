@@ -16,12 +16,6 @@ Only `IQKeyboardManagerSwift` is used in the project as a 3rd party dependency t
 
 ## Notes
 
-* It was really a long week. Thank you for your patience.
-
-* I have very similar ViewModels If I had more time that would be the thing to improve.
-
-* Regardless of this project succeeds or not feedbacks are always welcome. <3
-
 ## Sources
 
 * Modern Concurrency in Swift / raywenderlich.com
