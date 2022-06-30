@@ -6,6 +6,9 @@
 //
 
 import Foundation
+import Network
+import Model
+import API
 
 protocol AccountDetailsViewModelProtocol: AnyObject {
     func updateAmount(_ amount: String)

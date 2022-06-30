@@ -6,6 +6,7 @@
 //
 
 import XCTest
+import Network
 @testable import Can_MoneyBox
 
 class LoginViewModelTests: XCTestCase {
@@ -14,7 +15,7 @@ class LoginViewModelTests: XCTestCase {
 
     override func setUpWithError() throws {
         try super.setUpWithError()
-        sut = LoginViewModel(service: DefaultNetworkService())
+        sut = LoginViewModel()
     }
 
     override func tearDownWithError() throws {

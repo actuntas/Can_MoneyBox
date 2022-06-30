@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Network
 
 private typealias ActionHandlers = LoadingHandler & ErrorHandler
 

@@ -6,6 +6,8 @@
 //
 
 import Foundation
+import Model
+import API
 
 protocol LoginViewModelOutput: AnyObject {
     func handleEmailError(shouldShowError: Bool)
@@ -22,19 +24,18 @@ struct LoginViewModelDatasource {
 
 final class LoginViewModel {
     
-    let service: NetworkService
+    let userAPI: UserAPI
     weak var output: LoginViewModelOutput?
     
-    init(service: NetworkService) {
-        self.service = service
+    init(userAPI: UserAPI = .shared) {
+        self.userAPI = userAPI
     }
     
     func login(email: String, password: String) {
         
-        var request = LoginRequest()
-        request.httpBody = ["Email":email, "Password":password, "Idfa":"idfa"]
         
-        service.perform(request) { [weak self] result in
+        
+        userAPI.login(email: email, password: password, completion: { [weak self] result in
             switch result {
                 
             case .success(let user):
@@ -53,9 +54,8 @@ final class LoginViewModel {
                     self?.output?.showAlert(title: "Error", message: error.localizedDescription, buttonTitle: "Ok")
                     self?.output?.removeLoading()
                 }
-                
             }
-        }
+        })
     }
     
 }

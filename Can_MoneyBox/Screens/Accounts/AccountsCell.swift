@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import Model
+import API
 
 class AccountsCell: UITableViewCell {
 

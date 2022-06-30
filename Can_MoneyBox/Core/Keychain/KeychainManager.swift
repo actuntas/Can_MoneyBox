@@ -12,29 +12,24 @@ import Foundation
 final class KeychainManager {
     
     static let standard = KeychainManager()
-    private init() {}
     
+    private init() {}
     func save(_ data: Data, service: String, account: String) {
-        
         let query = [
             kSecValueData: data,
             kSecAttrService: service,
             kSecAttrAccount: account,
             kSecClass: kSecClassGenericPassword
         ] as CFDictionary
-        
         let status = SecItemAdd(query, nil)
         
         if status == errSecDuplicateItem {
-        
             let query = [
                 kSecAttrService: service,
                 kSecAttrAccount: account,
                 kSecClass: kSecClassGenericPassword,
             ] as CFDictionary
-            
             let attributesToUpdate = [kSecValueData: data] as CFDictionary
-            
             SecItemUpdate(query, attributesToUpdate)
         }
     }

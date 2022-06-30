@@ -6,6 +6,9 @@
 //
 
 import UIKit
+import Network
+import API
+import Model
 
 protocol Coordinator: AnyObject {
     
@@ -31,7 +34,7 @@ class MainCoordinator: Coordinator {
     func showLogin() {
         let vc = LoginVC.instantiate(storyboard: Storyboards.Login)
         vc.coordinator = self
-        let viewModel = LoginViewModel(service: DefaultNetworkService())
+        let viewModel = LoginViewModel()
         vc.viewModel = viewModel
         navigationController.pushViewController(vc, animated: false)
     }
