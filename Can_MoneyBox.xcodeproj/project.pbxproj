@@ -251,6 +251,7 @@
 			children = (
 				3225F88A28308E7E00B10A29 /* APIConstants.swift */,
 				3225F891283090BA00B10A29 /* Network */,
+				3250E5702880C22B0036C2B1 /* Request */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -264,6 +265,16 @@
 				3225F88F2830905700B10A29 /* RequestMethod.swift */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		3250E5702880C22B0036C2B1 /* Request */ = {
+			isa = PBXGroup;
+			children = (
+				32912C1B2831387100D79A91 /* LoginRequest.swift */,
+				32912C282831712400D79A91 /* AccountsRequest.swift */,
+				32912C362831ACD400D79A91 /* IncrementRequest.swift */,
+			);
+			path = Request;
 			sourceTree = "<group>";
 		};
 		32912C022831274A00D79A91 /* Model */ = {
@@ -282,7 +293,6 @@
 				32912C0E28312BD600D79A91 /* Login.storyboard */,
 				32912C1028312BDD00D79A91 /* LoginVC.swift */,
 				32912C192831367600D79A91 /* LoginViewModel.swift */,
-				32912C1B2831387100D79A91 /* LoginRequest.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -323,7 +333,6 @@
 				32912C2428316EB100D79A91 /* AccountsVC.swift */,
 				32912C2E28317E3500D79A91 /* AccountsCell.swift */,
 				32912C2628316F3100D79A91 /* AccountsViewModel.swift */,
-				32912C282831712400D79A91 /* AccountsRequest.swift */,
 			);
 			path = Accounts;
 			sourceTree = "<group>";
@@ -334,7 +343,6 @@
 				32912C382831AFB900D79A91 /* AccountDetails.storyboard */,
 				32912C322831A95500D79A91 /* AccountDetailsVC.swift */,
 				32912C342831AA0F00D79A91 /* AccountDetailsViewModel.swift */,
-				32912C362831ACD400D79A91 /* IncrementRequest.swift */,
 			);
 			path = AccountDetails;
 			sourceTree = "<group>";
