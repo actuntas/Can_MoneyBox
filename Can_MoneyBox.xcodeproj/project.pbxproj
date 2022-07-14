@@ -16,9 +16,9 @@
 		3225F88E28308ECC00B10A29 /* RequestProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3225F88D28308ECC00B10A29 /* RequestProtocol.swift */; };
 		3225F8902830905700B10A29 /* RequestMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3225F88F2830905700B10A29 /* RequestMethod.swift */; };
 		3225F893283090C800B10A29 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3225F892283090C800B10A29 /* NetworkError.swift */; };
-		3225F895283095BE00B10A29 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3225F894283095BE00B10A29 /* NetworkService.swift */; };
 		3225F89A2830A71D00B10A29 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 3225F8992830A71D00B10A29 /* IQKeyboardManagerSwift */; };
 		32455557283C073B00C7129E /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32455556283C073B00C7129E /* Coordinator.swift */; };
+		3250E5722880C2E00036C2B1 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3250E5712880C2E00036C2B1 /* NetworkService.swift */; };
 		325A1EC9283AC50700870946 /* Storyboarded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 325A1EC8283AC50700870946 /* Storyboarded.swift */; };
 		32912C06283127F200D79A91 /* SplashVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32912C05283127F200D79A91 /* SplashVC.swift */; };
 		32912C082831280F00D79A91 /* Splash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32912C072831280F00D79A91 /* Splash.storyboard */; };
@@ -97,8 +97,8 @@
 		3225F88D28308ECC00B10A29 /* RequestProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestProtocol.swift; sourceTree = "<group>"; };
 		3225F88F2830905700B10A29 /* RequestMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestMethod.swift; sourceTree = "<group>"; };
 		3225F892283090C800B10A29 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
-		3225F894283095BE00B10A29 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		32455556283C073B00C7129E /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		3250E5712880C2E00036C2B1 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		325A1EC8283AC50700870946 /* Storyboarded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboarded.swift; sourceTree = "<group>"; };
 		32912C05283127F200D79A91 /* SplashVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashVC.swift; sourceTree = "<group>"; };
 		32912C072831280F00D79A91 /* Splash.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Splash.storyboard; sourceTree = "<group>"; };
@@ -260,9 +260,9 @@
 			isa = PBXGroup;
 			children = (
 				3225F892283090C800B10A29 /* NetworkError.swift */,
-				3225F894283095BE00B10A29 /* NetworkService.swift */,
 				3225F88D28308ECC00B10A29 /* RequestProtocol.swift */,
 				3225F88F2830905700B10A29 /* RequestMethod.swift */,
+				3250E5712880C2E00036C2B1 /* NetworkService.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -541,7 +541,6 @@
 				32912C332831A95500D79A91 /* AccountDetailsVC.swift in Sources */,
 				325A1EC9283AC50700870946 /* Storyboarded.swift in Sources */,
 				32A656652836DC17006261CA /* Contributions.swift in Sources */,
-				3225F895283095BE00B10A29 /* NetworkService.swift in Sources */,
 				32912C1C2831387100D79A91 /* LoginRequest.swift in Sources */,
 				32A6564F2836DA85006261CA /* ActionMessage.swift in Sources */,
 				32A6565D2836DBA4006261CA /* Wrapper.swift in Sources */,
@@ -567,6 +566,7 @@
 				3225F88E28308ECC00B10A29 /* RequestProtocol.swift in Sources */,
 				32B2352E285568EE001A0A7C /* URLSession + Ext.swift in Sources */,
 				32A656632836DBFD006261CA /* AssetBox.swift in Sources */,
+				3250E5722880C2E00036C2B1 /* NetworkService.swift in Sources */,
 				3225F8902830905700B10A29 /* RequestMethod.swift in Sources */,
 				32E33DFD283537A60045981D /* KeychainManager.swift in Sources */,
 				32A656752836DCBF006261CA /* Fund.swift in Sources */,
