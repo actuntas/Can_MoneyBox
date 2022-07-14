@@ -68,7 +68,6 @@
 		32A656732836DCB1006261CA /* Documents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A656722836DCB1006261CA /* Documents.swift */; };
 		32A656752836DCBF006261CA /* Fund.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A656742836DCBF006261CA /* Fund.swift */; };
 		32A656772836DCD4006261CA /* Lisa.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A656762836DCD4006261CA /* Lisa.swift */; };
-		32B2352E285568EE001A0A7C /* URLSession + Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32B2352D285568EE001A0A7C /* URLSession + Ext.swift */; };
 		32CE461E28343E3C00B520F3 /* String + Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32CE461D28343E3C00B520F3 /* String + Ext.swift */; };
 		32E33DFD283537A60045981D /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32E33DFC283537A60045981D /* KeychainManager.swift */; };
 		32E33DFF283538B90045981D /* KeychainError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32E33DFE283538B90045981D /* KeychainError.swift */; };
@@ -148,7 +147,6 @@
 		32A656722836DCB1006261CA /* Documents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Documents.swift; sourceTree = "<group>"; };
 		32A656742836DCBF006261CA /* Fund.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fund.swift; sourceTree = "<group>"; };
 		32A656762836DCD4006261CA /* Lisa.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lisa.swift; sourceTree = "<group>"; };
-		32B2352D285568EE001A0A7C /* URLSession + Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSession + Ext.swift"; sourceTree = "<group>"; };
 		32CE461D28343E3C00B520F3 /* String + Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String + Ext.swift"; sourceTree = "<group>"; };
 		32E33DFC283537A60045981D /* KeychainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainManager.swift; sourceTree = "<group>"; };
 		32E33DFE283538B90045981D /* KeychainError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainError.swift; sourceTree = "<group>"; };
@@ -408,7 +406,6 @@
 			isa = PBXGroup;
 			children = (
 				32CE461D28343E3C00B520F3 /* String + Ext.swift */,
-				32B2352D285568EE001A0A7C /* URLSession + Ext.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -564,7 +561,6 @@
 				32A656672836DC2B006261CA /* InvestorAccount.swift in Sources */,
 				32912C1A2831367600D79A91 /* LoginViewModel.swift in Sources */,
 				3225F88E28308ECC00B10A29 /* RequestProtocol.swift in Sources */,
-				32B2352E285568EE001A0A7C /* URLSession + Ext.swift in Sources */,
 				32A656632836DBFD006261CA /* AssetBox.swift in Sources */,
 				3250E5722880C2E00036C2B1 /* NetworkService.swift in Sources */,
 				3225F8902830905700B10A29 /* RequestMethod.swift in Sources */,
